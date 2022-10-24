@@ -1,0 +1,6 @@
+.editable-text__main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}

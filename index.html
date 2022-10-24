@@ -12,7 +12,28 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
-<body>
-  
+<body class="page">
+
+  <header class="header">
+    <img src="./images/site-logo.svg" alt="Логотип с названием сайта и надписью Россия над ним." class="site-logo header__site-logo"> 
+  </header>
+
+  <main class="content">
+
+    <section class="profile-info content__profile-info">
+      <img src="./images/profile-images/profile-pic.jpg" alt="Изображение, установленное пользователем для профиля." class="profile-pic">
+      <div class="editable-text profile-info__editable-text">
+        <div class="editable-text__main">
+          <h1 class="editable-text__main-text">Жак-Ив Кусто</h1>
+          <button class="editable-text__edit-btn main-hover" type="button">
+            <img src="./images/ui-icons/edit-btn-pic.svg" alt="Пиктограмма кнопки редактирования" class="editable-text__edit-btn-icon">
+          </button>
+        </div>
+        <p class="editable-text__additional">Исследователь океана</p>
+      </div>
+      <button class="add-btn main-hover" type="button"><img src="./images/ui-icons/add-btn-pic.svg" alt="Пиктограмма кнопки добавления новых изображений" class="add-btn__icon"></button>
+
+    </section>
+  </main>
 </body>
 </html>
