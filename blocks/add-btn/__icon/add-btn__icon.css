@@ -1,3 +1,5 @@
 .add-btn__icon {
   height: 16px;
+  display: block;
+  margin: auto;
 }

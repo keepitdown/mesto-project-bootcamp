@@ -1,3 +1,5 @@
 .editable-text__edit-btn-icon {
   height: 7.5px;
+  display: block;
+  margin: auto;
 }
