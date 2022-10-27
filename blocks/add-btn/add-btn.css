@@ -3,7 +3,7 @@
   max-width: 330px;
   box-sizing: border-box;
   padding: 15px 0;
-  background-color: #000;
+  background-color: transparent;
   border: 2px solid #fff;
   border-radius: 2px;
 }
