@@ -17,3 +17,11 @@
 @import url(../blocks/editable-text/__additional/editable-text__additional.css);
 @import url(../blocks/add-btn/add-btn.css);
 @import url(../blocks/add-btn/__icon/add-btn__icon.css);
+@import url(../blocks/content/__gallery/content__gallery.css);
+@import url(../blocks/gallery/__list/gallery__list.css);
+@import url(../blocks/image-card/image-card.css);
+@import url(../blocks/image-card/__image/image-card__image.css);
+@import url(../blocks/image-card/__caption/image-card__caption.css);
+@import url(../blocks/image-card/__title/image-card__title.css);
+@import url(../blocks/like-btn/like-btn.css);
+@import url(../blocks/like-btn/__icon/like-btn__icon.css);

@@ -20,18 +20,80 @@
 
   <main class="content">
 
-    <section class="profile-info content__profile-info">
-      <img src="./images/profile-images/profile-pic.jpg" alt="Изображение, установленное пользователем для профиля." class="profile-pic">
+    <section class="profile-info content__profile-info" aria-label="Информация о пользователе">
+      <img src="./images/profile/profile-pic.jpg" alt="Изображение, установленное пользователем для профиля." class="profile-pic">
       <div class="editable-text profile-info__editable-text">
         <div class="editable-text__main">
           <h1 class="editable-text__main-text">Жак-Ив Кусто</h1>
           <button class="editable-text__edit-btn main-hover" type="button">
-            <img src="./images/ui-icons/edit-btn-pic.svg" alt="Пиктограмма кнопки редактирования" class="editable-text__edit-btn-icon">
+            <img src="./images/ui/edit-btn-pic.svg" alt="Пиктограмма кнопки редактирования" class="editable-text__edit-btn-icon">
           </button>
         </div>
         <p class="editable-text__additional">Исследователь океана</p>
       </div>
-      <button class="add-btn main-hover" type="button"><img src="./images/ui-icons/add-btn-pic.svg" alt="Пиктограмма кнопки добавления новых изображений" class="add-btn__icon"></button>
+      <button class="add-btn main-hover" type="button">
+        <img src="./images/ui/add-btn-pic.svg" alt="Пиктограмма кнопки добавления новых изображений" class="add-btn__icon">
+      </button>
+    </section>
+
+    <section class="gallery content__gallery" aria-label="Фотографии пользователя">
+
+      <ul class="gallery__list">
+        <li class="image-card">
+          <img src="./images/profile/gallery-images/gallery-img-1.jpg" alt="Фотография из галереи пользователя" class="image-card__image">
+          <div class="image-card__caption">
+              <h2 class="image-card__title">Карачаевск</h2>
+              <button class="like-btn" type="button">
+                <img src="./images/ui/like-btn-pic.svg" alt="Пиктограмма кнопки Понравилось" class="like-btn__icon">
+              </button>
+          </div>
+        </li>
+        <li class="image-card">
+          <img src="./images/profile/gallery-images/gallery-img-2.jpg" alt="Фотография из галереи пользователя" class="image-card__image">
+          <div class="image-card__caption">
+              <h2 class="image-card__title">Гора Эльбрус</h2>
+              <button class="like-btn" type="button">
+                <img src="./images/ui/like-btn-pic.svg" alt="Пиктограмма кнопки Понравилось" class="like-btn__icon">
+              </button>
+          </div>
+        </li>
+        <li class="image-card">
+          <img src="./images/profile/gallery-images/gallery-img-3.jpg" alt="Фотография из галереи пользователя" class="image-card__image">
+          <div class="image-card__caption">
+              <h2 class="image-card__title">Домбай</h2>
+              <button class="like-btn" type="button">
+                <img src="./images/ui/like-btn-pic.svg" alt="Пиктограмма кнопки Понравилось" class="like-btn__icon">
+              </button>
+          </div>
+        </li>
+        <li class="image-card">
+          <img src="./images/profile/gallery-images/gallery-img-4.jpg" alt="Фотография из галереи пользователя" class="image-card__image">
+          <div class="image-card__caption">
+              <h2 class="image-card__title">Гора Эльбрус</h2>
+              <button class="like-btn" type="button">
+                <img src="./images/ui/like-btn-pic.svg" alt="Пиктограмма кнопки Понравилось" class="like-btn__icon">
+              </button>
+          </div>
+        </li>
+        <li class="image-card">
+          <img src="./images/profile/gallery-images/gallery-img-5.jpg" alt="Фотография из галереи пользователя" class="image-card__image">
+          <div class="image-card__caption">
+              <h2 class="image-card__title">Домбай</h2>
+              <button class="like-btn" type="button">
+                <img src="./images/ui/like-btn-pic.svg" alt="Пиктограмма кнопки Понравилось" class="like-btn__icon">
+              </button>
+          </div>
+        </li>
+        <li class="image-card">
+          <img src="./images/profile/gallery-images/gallery-img-6.jpg" alt="Фотография из галереи пользователя" class="image-card__image">
+          <div class="image-card__caption">
+              <h2 class="image-card__title">Карачаево-Черкесия</h2>
+              <button class="like-btn" type="button">
+                <img src="./images/ui/like-btn-pic.svg" alt="Пиктограмма кнопки Понравилось" class="like-btn__icon">
+              </button>
+          </div>
+        </li>
+      </ul>
 
     </section>
   </main>

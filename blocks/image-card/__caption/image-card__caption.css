@@ -1,0 +1,7 @@
+.image-card__caption {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 25px 15px 31px 21px;
+}
