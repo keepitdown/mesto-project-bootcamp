@@ -3,3 +3,9 @@
   display: block;
   margin: auto;
 }
+
+@media screen and (min-width: 650px) {
+  .add-btn__icon {
+    height: 22px;
+  }
+}

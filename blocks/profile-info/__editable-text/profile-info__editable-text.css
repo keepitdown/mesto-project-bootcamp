@@ -1,3 +1,10 @@
 .profile-info__editable-text {
   margin: 26px 0 36px;
 }
+
+@media screen and (min-width: 650px) {
+  .profile-info__editable-text {
+    align-self: flex-start;
+    margin: 22px 0 0 30px;
+  } 
+}

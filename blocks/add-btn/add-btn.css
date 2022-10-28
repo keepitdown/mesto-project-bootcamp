@@ -7,3 +7,11 @@
   border: 2px solid #fff;
   border-radius: 2px;
 }
+
+@media screen and (min-width: 650px) {
+  .add-btn {
+    width: 150px;
+    padding: 12px 0;
+    margin-left: auto;
+  }
+}

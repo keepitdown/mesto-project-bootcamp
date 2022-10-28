@@ -5,3 +5,9 @@
   font-weight: 400;
   text-align: center;
 }
+
+@media screen and (min-width: 650px) {
+  .editable-text__additional {
+    text-align: left;
+  }
+}

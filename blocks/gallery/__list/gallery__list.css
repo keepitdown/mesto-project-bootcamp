@@ -7,3 +7,9 @@
   grid-template-columns: 1fr;
   gap: 20px;
 }
+
+@media screen and (min-width: 600px) {
+  .gallery__list {
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  }
+}

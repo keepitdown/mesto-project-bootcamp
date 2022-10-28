@@ -4,3 +4,9 @@
   align-items: flex-start;
   margin-bottom: 14px;
 }
+
+@media screen and (min-width: 650px) {
+  .editable-text__main {
+    justify-content: flex-start;
+  }
+}
