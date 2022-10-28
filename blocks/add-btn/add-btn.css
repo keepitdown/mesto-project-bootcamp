@@ -6,12 +6,19 @@
   background-color: transparent;
   border: 2px solid #fff;
   border-radius: 2px;
+  flex-shrink: 0;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 600px) {
   .add-btn {
-    width: 150px;
+    width: 120px;
     padding: 12px 0;
     margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .add-btn {
+    width: 150px;
   }
 }

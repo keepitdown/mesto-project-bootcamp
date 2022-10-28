@@ -2,6 +2,12 @@
   margin: 42px 19px 36px;
 }
 
+@media screen and (min-width: 600px) {
+  .content__profile-info {
+    margin: 42px 40px 36px; 
+  } 
+}
+
 @media screen and (min-width: 1280px) {
   .content__profile-info {
     margin: 40px 200px 51px; 

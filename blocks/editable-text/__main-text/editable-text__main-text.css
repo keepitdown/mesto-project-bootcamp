@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 600px) {
   .editable-text__main-text {
     margin: 0 10px 0 0;
     text-align: left;

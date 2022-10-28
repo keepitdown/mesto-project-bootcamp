@@ -5,7 +5,7 @@
   margin-bottom: 14px;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 600px) {
   .editable-text__main {
     justify-content: flex-start;
   }
