@@ -16,6 +16,13 @@
 
 @media screen and (min-width: 950px) {
   .page__footer {
-    margin-top: 67px;
+    margin: 67px 75px 0;
+  }
+}
+
+@media screen and (min-width: 1030px) {
+  .page__footer {
+    margin: 67px auto 0;
+    max-width: 880px;
   }
 }

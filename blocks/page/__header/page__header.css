@@ -3,3 +3,10 @@
     margin: 0 75px;
   }
 }
+
+@media screen and (min-width: 1030px) {
+  .page__header {
+    margin: 0 auto;
+    max-width: 880px;
+  }
+}
