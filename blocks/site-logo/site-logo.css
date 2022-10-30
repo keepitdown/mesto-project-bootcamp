@@ -1,3 +1,9 @@
 .site-logo {
   height: 24px;
 }
+
+@media screen and (min-width: 950px) {
+  .site-logo {
+    height: 33px;
+  }
+}

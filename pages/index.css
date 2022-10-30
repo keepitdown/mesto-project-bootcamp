@@ -1,6 +1,8 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/page/page.css);
+@import url(../blocks/page/__header/page__header.css);
+@import url(../blocks/page/__footer/page__footer.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__site__logo/header__site-logo.css);
 @import url(../blocks/site-logo/site-logo.css);
@@ -25,5 +27,4 @@
 @import url(../blocks/image-card/__title/image-card__title.css);
 @import url(../blocks/like-btn/like-btn.css);
 @import url(../blocks/like-btn/__icon/like-btn__icon.css);
-@import url(../blocks/page/__footer/page__footer.css);
 @import url(../blocks/footer/__copyright-info/footer__copyright-info.css);

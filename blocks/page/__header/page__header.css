@@ -1,0 +1,5 @@
+@media screen and (min-width: 800px) {
+  .page__header {
+    margin: 0 75px;
+  }
+}

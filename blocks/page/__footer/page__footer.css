@@ -7,3 +7,15 @@
     margin: 48px 40px 0;
   }
 }
+
+@media screen and (min-width: 800px) {
+  .page__footer {
+    margin: 50px 75px 0;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .page__footer {
+    margin-top: 67px;
+  }
+}

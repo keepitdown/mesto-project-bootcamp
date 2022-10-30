@@ -2,6 +2,10 @@
   transition: opacity .2s ease-out;
 }
 
+.main-hover:hover {
+  cursor: pointer;
+}
+
 .main-hover:hover, .main-hover:active {
   opacity: 0.6;
 }

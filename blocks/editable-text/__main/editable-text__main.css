@@ -10,3 +10,9 @@
     justify-content: flex-start;
   }
 }
+
+@media screen and (min-width: 950px) {
+  .editable-text__main {
+    margin-bottom: 16px;
+  }
+}

@@ -11,3 +11,9 @@
     text-align: left;
   }
 }
+
+@media screen and (min-width: 950px) {
+  .editable-text__additional {
+    font-size: 18px;
+  }
+}

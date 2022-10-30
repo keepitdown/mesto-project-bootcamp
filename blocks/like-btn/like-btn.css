@@ -7,6 +7,10 @@
   transition: opacity .2s ease-out;
 }
 
+.like-btn:hover {
+  cursor: pointer;
+}
+
 .like-btn:hover, .like-btn:active {
   opacity: .5;
 }
