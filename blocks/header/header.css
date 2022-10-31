@@ -4,7 +4,7 @@
   border-bottom: 1px solid #545454b3;
 }
 
-@media screen and (min-width: 74px) {
+@media screen and (min-width: 950px) {
   .header {
     min-height: 74px;
   }
