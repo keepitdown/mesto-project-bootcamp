@@ -29,7 +29,7 @@
 @import url(../blocks/like-btn/__icon/like-btn__icon.css);
 @import url(../blocks/footer/__copyright-info/footer__copyright-info.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__opened/popup__opened.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/popup/__close-btn-icon/popup__close-btn-icon.css);
