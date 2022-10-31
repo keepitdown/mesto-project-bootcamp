@@ -28,3 +28,13 @@
 @import url(../blocks/like-btn/like-btn.css);
 @import url(../blocks/like-btn/__icon/like-btn__icon.css);
 @import url(../blocks/footer/__copyright-info/footer__copyright-info.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__opened/popup__opened.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__close-btn-icon/popup__close-btn-icon.css);
+@import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__input-field-list/popup__input-field-list.css);
+@import url(../blocks/popup/__input-field/popup__input-field.css);
+@import url(../blocks/popup/__input-filed-list-item/popup__input-field-list-item.css);
+@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);

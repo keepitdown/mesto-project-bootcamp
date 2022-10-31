@@ -1,0 +1,6 @@
+.popup__input-field-list {
+  box-sizing: border-box;
+  margin: 75px 0 45px;
+  padding: 0;
+  list-style: none;
+}

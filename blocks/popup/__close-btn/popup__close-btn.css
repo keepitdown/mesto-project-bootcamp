@@ -1,0 +1,10 @@
+.popup__close-btn {
+  font-size: 0;
+  position: absolute;
+  top: -36px;
+  right: 0;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
