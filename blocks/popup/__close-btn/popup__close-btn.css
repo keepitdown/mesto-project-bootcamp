@@ -8,3 +8,15 @@
   border: none;
   background-color: transparent;
 }
+
+@media screen and (min-width: 500px) {
+  .popup__close-btn {
+    top: -40px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .popup__close-btn {
+    right: -40px;
+  }
+}

@@ -4,3 +4,9 @@
   padding: 0;
   list-style: none;
 }
+
+@media screen and (min-width: 500px) {
+  .popup__input-field-list {
+    margin: 54px 0 48px;
+  }
+}
