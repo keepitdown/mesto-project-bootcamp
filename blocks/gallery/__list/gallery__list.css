@@ -11,7 +11,7 @@
 @media screen and (min-width: 600px) {
   .gallery__list {
     grid-template-columns: 1fr 1fr;
-    gap: 17px;
+    gap: 20px 17px;
   }
 }
 
