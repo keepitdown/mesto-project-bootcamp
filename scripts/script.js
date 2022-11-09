@@ -1,3 +1,5 @@
+//Content data
+
 const initialCards = [
   {
     name: 'Nissan GT-R R32',
@@ -25,6 +27,8 @@ const initialCards = [
   }
 ];
 
+//Gallery cards creation
+
 const imageGallery = document.querySelector('.gallery__list');
 const cardTemplate = document.querySelector('#image-card-template');
 
@@ -40,3 +44,22 @@ function populateGallery() {
 }
 
 populateGallery();
+
+//Popup activation and deactivation
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+const profileEditBtn = document.querySelector('#profile-edit-btn');
+const profileEditWindow = document.querySelector('.popup_type_profile-editor');
+
+profileEditBtn.addEventListener('click', () => openPopup(profileEditWindow));
+
+const closeProfileEditBtn = document.querySelector('#close-profile-edit-btn');
+
+closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow));
