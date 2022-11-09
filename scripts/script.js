@@ -45,21 +45,54 @@ function populateGallery() {
 
 populateGallery();
 
-//Popup activation and deactivation
+//Popup activation
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
+const profileName = document.querySelector('.profile-info__profile-name');
+const profileNameField = document.querySelector('#profile-name-field');
+
+const profileDescription = document.querySelector('.profile-info__profile-description');
+const profileDescriptionField = document.querySelector('#profile-description-field');
+
+
+function showCurrentInfo() {
+  profileNameField.value = profileName.textContent;
+  profileDescriptionField.value = profileDescription.textContent;
+}
+
+const profileEditBtn = document.querySelector('#profile-edit-btn');
+const profileEditWindow = document.querySelector('#profile-editor-window');
+
+profileEditBtn.addEventListener('click', () => {
+  openPopup(profileEditWindow);
+  showCurrentInfo();
+});
+
+//Popup deactivation
+
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-const profileEditBtn = document.querySelector('#profile-edit-btn');
-const profileEditWindow = document.querySelector('.popup_type_profile-editor');
-
-profileEditBtn.addEventListener('click', () => openPopup(profileEditWindow));
-
 const closeProfileEditBtn = document.querySelector('#close-profile-edit-btn');
 
 closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow));
+
+//Profile editing
+
+function applyProfileChanges() {
+  profileName.textContent = profileNameField.value;
+  profileDescription.textContent = profileDescriptionField.value;
+}
+
+const saveProfileChangesBtn = document.querySelector('#save-profile-changes-btn');
+const profileEditForm = document.querySelector('#profile-info-edit-form')
+
+profileEditForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  applyProfileChanges();
+  closePopup(profileEditWindow);
+});

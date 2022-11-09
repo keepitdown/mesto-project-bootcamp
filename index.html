@@ -53,20 +53,20 @@
     <p class="footer__copyright-info">© 2022 Mesto Russia</p>
   </footer>
 
-  <div class="popup popup_type_profile-editor">
+  <div class="popup" id="profile-editor-window">
     <div class="popup__content">
-      <button class="popup__close-btn main-hover" id= "close-profile-edit-btn" type="button" aria-label="Закрыть окно редактирования профиля"></button>
-      <form name="profile-info-editor">
+      <button class="popup__close-btn main-hover" id="close-profile-edit-btn" type="button" aria-label="Закрыть окно редактирования профиля"></button>
+      <form name="profile-info-editor" id="profile-info-edit-form">
         <h2 class="popup__heading">Редактировать профиль</h2>
         <ul class="popup__input-field-list">
           <li class="popup__input-field-list-item">
-            <input type="text" name="profile-name" placeholder="Ваше имя" value="Жак-Ив Кусто" id="profile-name" class="popup__input-field" aria-label="Имя">
+            <input type="text" name="profile-name" placeholder="Ваше имя" id="profile-name-field" class="popup__input-field" aria-label="Имя">
           </li>
           <li class="popup__input-field-list-item">
-            <input type="text" name="profile-description" placeholder="О себе" value="Исследователь океана" id="profile-description" class="popup__input-field" aria-label="О себе">
+            <input type="text" name="profile-description" placeholder="О себе" id="profile-description-field" class="popup__input-field" aria-label="О себе">
           </li>
         </ul>
-        <button class="popup__submit-btn main-hover" type="submit">Сохранить</button>
+        <button class="popup__submit-btn main-hover" id="save-profile-changes-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
