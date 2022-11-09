@@ -17,6 +17,6 @@
 @media screen and (min-width: 1030px) {
   .content__gallery {
     margin: 0 auto;
-    max-width: 880px;
+    width: 880px;
   }
 }
