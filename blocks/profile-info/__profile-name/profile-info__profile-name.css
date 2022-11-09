@@ -1,4 +1,4 @@
-.editable-text__main-text {
+.profile-info__profile-name {
   margin: 0 10px 0 28px;
   font-size: 27px;
   line-height: 1.22;
@@ -7,14 +7,14 @@
 }
 
 @media screen and (min-width: 600px) {
-  .editable-text__main-text {
+  .profile-info__profile-name {
     margin: 0 10px 0 0;
     text-align: left;
   }
 }
 
 @media screen and (min-width: 950px) {
-  .editable-text__main-text {
+  .profile-info__profile-name {
     font-size: 42px;
     line-height: 1.14;
     margin-right: 18px;

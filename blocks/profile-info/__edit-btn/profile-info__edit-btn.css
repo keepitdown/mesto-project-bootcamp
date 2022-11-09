@@ -1,4 +1,4 @@
-.editable-text__edit-btn {
+.profile-info__edit-btn {
   box-sizing: border-box;
   padding: 4.25px;
   margin-top: 8px;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (min-width: 950px) {
-  .editable-text__edit-btn {
+  .profile-info__edit-btn {
     padding: 6px;
     margin-top: 15px;
   }

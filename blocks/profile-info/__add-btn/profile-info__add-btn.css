@@ -1,4 +1,4 @@
-.add-btn {
+.profile-info__add-btn {
   width: 100%;
   max-width: 330px;
   box-sizing: border-box;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  .add-btn {
+  .profile-info__add-btn {
     width: 120px;
     padding: 12px 0;
     margin-left: auto;
@@ -18,7 +18,7 @@
 }
 
 @media screen and (min-width: 950px) {
-  .add-btn {
+  .profile-info__add-btn {
     width: 150px;
   }
 }
