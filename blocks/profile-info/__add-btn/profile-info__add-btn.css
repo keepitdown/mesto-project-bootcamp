@@ -1,8 +1,13 @@
 .profile-info__add-btn {
   width: 100%;
   max-width: 330px;
+  height: 50px;
   box-sizing: border-box;
-  padding: 15px 0;
+  padding: 0;
+  background-image: url(../../../images/ui/add-btn-pic.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
   background-color: transparent;
   border: 2px solid #fff;
   border-radius: 2px;
@@ -12,7 +17,7 @@
 @media screen and (min-width: 600px) {
   .profile-info__add-btn {
     width: 120px;
-    padding: 12px 0;
+    background-size: 22px;
     margin-left: auto;
   }
 }
