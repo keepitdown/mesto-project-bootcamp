@@ -1,18 +1,16 @@
 .editable-text__text-content {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 7px;
+  margin: 0 10px 0 28px;
+  min-width: 0;
 }
 
 @media screen and (min-width: 600px) {
   .editable-text__text-content {
-    justify-content: flex-start;
+    margin: 0 10px 0 0;
   }
 }
 
 @media screen and (min-width: 950px) {
   .editable-text__text-content {
-    margin-bottom: 8px;
+    margin: 0 18px 0 0;
   }
 }
