@@ -33,6 +33,12 @@ function leaveOrRemoveLike(likeBtn) {
   likeBtn.classList.toggle('image-card__like-btn_active');
 }
 
+//Delete button functionality
+
+function removeImageCard(removeBtn) {
+  removeBtn.closest('.image-card').remove();
+}
+
 //Gallery cards creation
 
 const imageGallery = document.querySelector('.gallery__list');
@@ -43,6 +49,7 @@ function createNewCard(cardInfo) {
   newCard.querySelector('.image-card__title').textContent = cardInfo.name;
   newCard.querySelector('.image-card__image').src = cardInfo.link;
   newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
+  newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
   imageGallery.append(newCard);
 }
 
