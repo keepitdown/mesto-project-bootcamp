@@ -27,38 +27,6 @@ const initialCards = [
   }
 ];
 
-//Like button functionality
-
-function leaveOrRemoveLike(likeBtn) {
-  likeBtn.classList.toggle('image-card__like-btn_active');
-}
-
-//Delete button functionality
-
-function removeImageCard(removeBtn) {
-  removeBtn.closest('.image-card').remove();
-}
-
-//Gallery cards creation
-
-const imageGallery = document.querySelector('.gallery__list');
-const cardTemplate = document.querySelector('#image-card-template');
-
-function createNewCard(cardInfo) {
-  const newCard = cardTemplate.content.querySelector('.image-card').cloneNode(true);
-  newCard.querySelector('.image-card__title').textContent = cardInfo.name;
-  newCard.querySelector('.image-card__image').src = cardInfo.link;
-  newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
-  newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
-  imageGallery.append(newCard);
-}
-
-function populateGallery() {
-  initialCards.forEach(createNewCard);
-}
-
-populateGallery();
-
 //Profile editor popup activation
 
 function openPopup(popup) {
@@ -116,6 +84,58 @@ profileEditForm.addEventListener('submit', (e) => {
   closePopup(profileEditWindow);
 });
 
+//Like button functionality
+
+function leaveOrRemoveLike(likeBtn) {
+  likeBtn.classList.toggle('image-card__like-btn_active');
+}
+
+//Delete button functionality
+
+function removeImageCard(removeBtn) {
+  removeBtn.closest('.image-card').remove();
+}
+
+//Open image-viwer
+
+const imageViewerWindow = document.querySelector('#image-viewer-window');
+const imageViewerImage = imageViewerWindow.querySelector('#image-viewer-image');
+
+function changeImageInsideViewer(image) {
+  imageViewerImage.src = image.src;
+}
+
+function openImageViewer(image) {
+  changeImageInsideViewer(image);
+  imageViewerWindow.classList.add('image-viewer_opened');
+}
+
+//Close image-viewer
+
+function closeImageViewer() {
+  imageViewerWindow.classList.remove('image-viewer_opened');
+}
+
+const closeImageViewerBtn = imageViewerWindow.querySelector('#close-image-viwer-btn');
+
+closeImageViewerBtn.addEventListener('click', closeImageViewer);
+
+//Gallery cards creation
+
+const imageGallery = document.querySelector('.gallery__list');
+const cardTemplate = document.querySelector('#image-card-template');
+
+function createNewCard(cardInfo) {
+  const newCard = cardTemplate.content.querySelector('.image-card').cloneNode(true);
+  const cardImage = newCard.querySelector('.image-card__image');
+  newCard.querySelector('.image-card__title').textContent = cardInfo.name;
+  cardImage.src = cardInfo.link;
+  newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
+  newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
+  cardImage.addEventListener('click', (e) => openImageViewer(e.target));
+  imageGallery.append(newCard);
+}
+
 //New image popup activation
 
 const addImageBtn = document.querySelector('#add-image-btn');
@@ -153,3 +173,11 @@ newImageForm.addEventListener('submit', (e) => {
   createImageFromInputForm();
   closePopup(newImageWindow);
 })
+
+//Populate gallery
+
+function populateGallery() {
+  initialCards.forEach(createNewCard);
+}
+
+populateGallery();

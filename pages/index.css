@@ -38,6 +38,7 @@
 @import url(../blocks/popup/__input-filed-list-item/popup__input-field-list-item.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/image-viewer/image-viewer.css);
+@import url(../blocks/image-viewer/_opened/image-viewer_opened.css);
 @import url(../blocks/image-viewer/__content/image-viewer__content.css);
 @import url(../blocks/image-viewer/__close-btn/image-viewer__close-btn.css);
 @import url(../blocks/image-viewer/__image/image-viewer__image.css);
