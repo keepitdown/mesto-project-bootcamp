@@ -27,6 +27,12 @@ const initialCards = [
   }
 ];
 
+//Like button functionality
+
+function leaveOrRemoveLike(likeBtn) {
+  likeBtn.classList.toggle('image-card__like-btn_active');
+}
+
 //Gallery cards creation
 
 const imageGallery = document.querySelector('.gallery__list');
@@ -36,6 +42,7 @@ function createNewCard(cardInfo) {
   const newCard = cardTemplate.content.querySelector('.image-card').cloneNode(true);
   newCard.querySelector('.image-card__title').textContent = cardInfo.name;
   newCard.querySelector('.image-card__image').src = cardInfo.link;
+  newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
   imageGallery.append(newCard);
 }
 
@@ -83,9 +90,14 @@ closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow
 
 //Profile editing
 
+function changePageTitle(newProfileName) {
+  document.title = `${newProfileName}  - Mesto`;
+}
+
 function applyProfileChanges() {
   profileName.textContent = profileNameField.value;
   profileDescription.textContent = profileDescriptionField.value;
+  changePageTitle(profileNameField.value);
 }
 
 const saveProfileChangesBtn = document.querySelector('#save-profile-changes-btn');
