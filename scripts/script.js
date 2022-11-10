@@ -45,7 +45,7 @@ function populateGallery() {
 
 populateGallery();
 
-//Popup activation
+//Profile editor popup activation
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -71,7 +71,7 @@ profileEditBtn.addEventListener('click', () => {
   showCurrentInfo();
 });
 
-//Popup deactivation
+//Profile editor popup deactivation
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -96,3 +96,5 @@ profileEditForm.addEventListener('submit', (e) => {
   applyProfileChanges();
   closePopup(profileEditWindow);
 });
+
+//Add image popup activation
