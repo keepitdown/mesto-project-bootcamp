@@ -97,4 +97,27 @@ profileEditForm.addEventListener('submit', (e) => {
   closePopup(profileEditWindow);
 });
 
-//Add image popup activation
+//New image popup activation
+
+const addImageBtn = document.querySelector('#add-image-btn');
+const newImageWindow = document.querySelector('#new-image-window');
+
+/*function clearTextFields(formWindow) {
+  const textFields = formWindow.querySelectorAll('input', 'type[text]');
+  textFields.forEach((form) => form.value = '');
+}*/
+
+function clearTextFields(formWindow) {
+  formWindow.querySelector('form').reset();
+}
+
+addImageBtn.addEventListener('click', () => {
+  clearTextFields(newImageWindow);
+  openPopup(newImageWindow)
+});
+
+//New image popup deactivation
+
+const closeNewImageWindowBtn = document.querySelector('#close-new-image-btn');
+
+closeNewImageWindowBtn.addEventListener('click', () => closePopup(newImageWindow));
