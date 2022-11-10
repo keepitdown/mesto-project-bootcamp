@@ -1,0 +1,10 @@
+.image-viewer__caption {
+  margin: 0;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: #fff;
+  position: absolute;
+  bottom: -20px;
+}
