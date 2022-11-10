@@ -59,10 +59,12 @@ function openPopup(popup) {
 }
 
 const profileName = document.querySelector('.profile-info__profile-name');
-const profileNameField = document.querySelector('#profile-name-field');
-
 const profileDescription = document.querySelector('.profile-info__profile-description');
-const profileDescriptionField = document.querySelector('#profile-description-field');
+
+const profileEditWindow = document.querySelector('#profile-editor-window');
+
+const profileNameField = profileEditWindow.querySelector('#profile-name-field');
+const profileDescriptionField = profileEditWindow.querySelector('#profile-description-field');
 
 
 function showCurrentInfo() {
@@ -71,7 +73,6 @@ function showCurrentInfo() {
 }
 
 const profileEditBtn = document.querySelector('#profile-edit-btn');
-const profileEditWindow = document.querySelector('#profile-editor-window');
 
 profileEditBtn.addEventListener('click', () => {
   openPopup(profileEditWindow);
@@ -84,11 +85,11 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-const closeProfileEditBtn = document.querySelector('#close-profile-edit-btn');
+const closeProfileEditBtn = profileEditWindow.querySelector('#close-profile-edit-btn');
 
 closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow));
 
-//Profile editing
+//Profile edit submit
 
 function changePageTitle(newProfileName) {
   document.title = `${newProfileName}  - Mesto`;
@@ -100,8 +101,7 @@ function applyProfileChanges() {
   changePageTitle(profileNameField.value);
 }
 
-const saveProfileChangesBtn = document.querySelector('#save-profile-changes-btn');
-const profileEditForm = document.querySelector('#profile-info-edit-form')
+const profileEditForm = profileEditWindow.querySelector('#profile-info-edit-form')
 
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -114,11 +114,6 @@ profileEditForm.addEventListener('submit', (e) => {
 const addImageBtn = document.querySelector('#add-image-btn');
 const newImageWindow = document.querySelector('#new-image-window');
 
-/*function clearTextFields(formWindow) {
-  const textFields = formWindow.querySelectorAll('input', 'type[text]');
-  textFields.forEach((form) => form.value = '');
-}*/
-
 function clearTextFields(formWindow) {
   formWindow.querySelector('form').reset();
 }
@@ -130,6 +125,24 @@ addImageBtn.addEventListener('click', () => {
 
 //New image popup deactivation
 
-const closeNewImageWindowBtn = document.querySelector('#close-new-image-btn');
+const closeNewImageWindowBtn = newImageWindow.querySelector('#close-new-image-btn');
 
 closeNewImageWindowBtn.addEventListener('click', () => closePopup(newImageWindow));
+
+//New image submit
+
+const newImageForm = newImageWindow.querySelector('#new-image-form');
+
+const newImageNameField = newImageWindow.querySelector('#image-name-field');
+const newImageLinkField = newImageWindow.querySelector('#image-link-field');
+
+function createImageFromInputForm() {
+  const newImageData = {name: newImageNameField.value, link: newImageLinkField.value};
+  createNewCard(newImageData);
+}
+
+newImageForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  createImageFromInputForm();
+  closePopup(newImageWindow);
+})
