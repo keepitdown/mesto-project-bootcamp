@@ -1,0 +1,16 @@
+.image-card__remove-card-btn {
+  box-sizing: border-box;
+  width: 18px;
+  height: 19px;
+  padding: 0;
+  border: none;
+  background-image: url(../../../images/ui/remove-btn-pic.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}

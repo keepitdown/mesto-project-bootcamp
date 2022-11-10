@@ -20,6 +20,7 @@
 @import url(../blocks/content/__gallery/content__gallery.css);
 @import url(../blocks/gallery/__list/gallery__list.css);
 @import url(../blocks/image-card/image-card.css);
+@import url(../blocks/image-card/__remove-card-btn/image-card__remove-card-btn.css);
 @import url(../blocks/image-card/__image-container/image-card__image-container.css);
 @import url(../blocks/image-card/__image/image-card__image.css);
 @import url(../blocks/image-card/__caption/image-card__caption.css);
