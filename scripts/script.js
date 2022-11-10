@@ -83,9 +83,14 @@ closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow
 
 //Profile editing
 
+function changePageTitle(newProfileName) {
+  document.title = `${newProfileName}  - Mesto`;
+}
+
 function applyProfileChanges() {
   profileName.textContent = profileNameField.value;
   profileDescription.textContent = profileDescriptionField.value;
+  changePageTitle(profileNameField.value);
 }
 
 const saveProfileChangesBtn = document.querySelector('#save-profile-changes-btn');
