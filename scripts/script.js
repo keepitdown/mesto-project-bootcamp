@@ -87,7 +87,9 @@ function leaveOrRemoveLike(likeBtn) {
 //Delete button functionality
 
 function removeImageCard(removeBtn) {
-  removeBtn.closest('.image-card').remove();
+  const parentCard = removeBtn.closest('.image-card');
+  parentCard.classList.add('image-card_deleted');
+  parentCard.addEventListener('transitionend', (e) => e.target.remove());
 }
 
 //Open image-viwer
