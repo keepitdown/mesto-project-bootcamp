@@ -73,7 +73,7 @@
   </div>
 
   <div class="popup" id="new-image-window">
-    <div class="popup__content">
+    <div class="popup__content popup__content_type_form">
       <button class="popup__close-btn main-hover" id="close-new-image-btn" type="button" aria-label="Закрыть окно добавления фотографии"></button>
       <form name="image-info-editor" id="new-image-form">
         <h2 class="popup__heading">Новое место</h2>
@@ -90,9 +90,9 @@
     </div>
   </div>
 
-  <div class="image-viewer" id="image-viewer-window">
-    <div class="image-viewer__content">
-      <button class="image-viewer__close-btn main-hover" id="close-image-viwer-btn" type="button" aria-label="Закрыть окно просмотра фотографии"></button>
+  <div class="popup" id="image-viewer-window">
+    <div class="popup__content popup__content_type_image-viewer">
+      <button class="popup__close-btn main-hover" id="close-image-viwer-btn" type="button" aria-label="Закрыть окно просмотра фотографии"></button>
       <img alt="Фотография из галереи пользователя в большем размере" class="image-viewer__image" id="image-viewer-image">
       <h2 class="image-viewer__caption" id="image-viewer-caption"></h2>
     </div>

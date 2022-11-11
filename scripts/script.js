@@ -1,4 +1,4 @@
-//Content data
+//------------------------------Image gallery content-------------------------------------
 
 const initialCards = [
   {
@@ -27,11 +27,19 @@ const initialCards = [
   }
 ];
 
-//Profile editor popup activation
+//--------------------Basic popup close/open functions----------------------------
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+//---------------------------Profile-Info buttons---------------------------------
+
+//Profile editor popup open
 
 const profileName = document.querySelector('.profile-info__profile-name');
 const profileDescription = document.querySelector('.profile-info__profile-description');
@@ -54,35 +62,21 @@ profileEditBtn.addEventListener('click', () => {
   showCurrentInfo();
 });
 
-//Profile editor popup deactivation
+//New image popup open
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+const addImageBtn = document.querySelector('#add-image-btn');
+const newImageWindow = document.querySelector('#new-image-window');
+
+function clearTextFields(formWindow) {
+  formWindow.querySelector('form').reset();
 }
 
-const closeProfileEditBtn = profileEditWindow.querySelector('#close-profile-edit-btn');
-
-closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow));
-
-//Profile edit submit
-
-function changePageTitle(newProfileName) {
-  document.title = `${newProfileName}  - Mesto`;
-}
-
-function applyProfileChanges() {
-  profileName.textContent = profileNameField.value;
-  profileDescription.textContent = profileDescriptionField.value;
-  changePageTitle(profileNameField.value);
-}
-
-const profileEditForm = profileEditWindow.querySelector('#profile-info-edit-form')
-
-profileEditForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  applyProfileChanges();
-  closePopup(profileEditWindow);
+addImageBtn.addEventListener('click', () => {
+  clearTextFields(newImageWindow);
+  openPopup(newImageWindow)
 });
+
+//---------------------Image-card buttons and functionality----------------------------
 
 //Like button functionality
 
@@ -112,17 +106,7 @@ function openImageViewer(image) {
   imageViewerWindow.classList.add('image-viewer_opened');
 }
 
-//Close image-viewer
-
-function closeImageViewer() {
-  imageViewerWindow.classList.remove('image-viewer_opened');
-}
-
-const closeImageViewerBtn = imageViewerWindow.querySelector('#close-image-viwer-btn');
-
-closeImageViewerBtn.addEventListener('click', closeImageViewer);
-
-//Gallery cards creation
+//------------------------------Image-card creation-----------------------------------------
 
 const imageGallery = document.querySelector('.gallery__list');
 const cardTemplate = document.querySelector('#image-card-template');
@@ -138,25 +122,27 @@ function createNewCard(cardInfo) {
   imageGallery.prepend(newCard);
 }
 
-//New image popup activation
+//-------------------------------Popup windows buttons---------------------------------------
 
-const addImageBtn = document.querySelector('#add-image-btn');
-const newImageWindow = document.querySelector('#new-image-window');
+//Profile edit submit
 
-function clearTextFields(formWindow) {
-  formWindow.querySelector('form').reset();
+function changePageTitle(newProfileName) {
+  document.title = `${newProfileName}  - Mesto`;
 }
 
-addImageBtn.addEventListener('click', () => {
-  clearTextFields(newImageWindow);
-  openPopup(newImageWindow)
+function applyProfileChanges() {
+  profileName.textContent = profileNameField.value;
+  profileDescription.textContent = profileDescriptionField.value;
+  changePageTitle(profileNameField.value);
+}
+
+const profileEditForm = profileEditWindow.querySelector('#profile-info-edit-form')
+
+profileEditForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  applyProfileChanges();
+  closePopup(profileEditWindow);
 });
-
-//New image popup deactivation
-
-const closeNewImageWindowBtn = newImageWindow.querySelector('#close-new-image-btn');
-
-closeNewImageWindowBtn.addEventListener('click', () => closePopup(newImageWindow));
 
 //New image submit
 
@@ -176,7 +162,38 @@ newImageForm.addEventListener('submit', (e) => {
   closePopup(newImageWindow);
 })
 
-//Populate gallery
+//Close popup buttons
+
+const closePopupBtns = document.querySelectorAll('.popup__close-btn');
+
+closePopupBtns.forEach((closeButton) => {
+  const parentWindow = closeButton.closest('.popup');
+  closeButton.addEventListener('click', (e) => closePopup(parentWindow));
+});
+
+//New image popup deactivation
+
+const closeNewImageWindowBtn = newImageWindow.querySelector('#close-new-image-btn');
+
+closeNewImageWindowBtn.addEventListener('click', () => closePopup(newImageWindow));
+
+//Profile editor popup close
+
+const closeProfileEditBtn = profileEditWindow.querySelector('#close-profile-edit-btn');
+
+closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow));
+
+//Close image-viewer
+
+function closeImageViewer() {
+  imageViewerWindow.classList.remove('image-viewer_opened');
+}
+
+const closeImageViewerBtn = imageViewerWindow.querySelector('#close-image-viwer-btn');
+
+closeImageViewerBtn.addEventListener('click', closeImageViewer);
+
+//-----------------------Populate gallery function declaration and call---------------------------
 
 function populateGallery() {
   initialCards.reverse();
