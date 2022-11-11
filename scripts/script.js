@@ -100,9 +100,11 @@ function removeImageCard(removeBtn) {
 
 const imageViewerWindow = document.querySelector('#image-viewer-window');
 const imageViewerImage = imageViewerWindow.querySelector('#image-viewer-image');
+const imageViewerCaption = imageViewerWindow.querySelector('#image-viewer-caption');
 
 function changeImageInsideViewer(image) {
   imageViewerImage.src = image.src;
+  imageViewerCaption.textContent = image.closest('.image-card').querySelector('.image-card__title').textContent;
 }
 
 function openImageViewer(image) {
@@ -133,7 +135,7 @@ function createNewCard(cardInfo) {
   newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
   newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
   cardImage.addEventListener('click', (e) => openImageViewer(e.target));
-  imageGallery.append(newCard);
+  imageGallery.prepend(newCard);
 }
 
 //New image popup activation
@@ -177,6 +179,7 @@ newImageForm.addEventListener('submit', (e) => {
 //Populate gallery
 
 function populateGallery() {
+  initialCards.reverse();
   initialCards.forEach(createNewCard);
 }
 
