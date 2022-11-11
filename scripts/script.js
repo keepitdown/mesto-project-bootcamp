@@ -103,7 +103,7 @@ function changeImageInsideViewer(image) {
 
 function openImageViewer(image) {
   changeImageInsideViewer(image);
-  imageViewerWindow.classList.add('image-viewer_opened');
+  openPopup(imageViewerWindow);
 }
 
 //------------------------------Image-card creation-----------------------------------------
@@ -170,28 +170,6 @@ closePopupBtns.forEach((closeButton) => {
   const parentWindow = closeButton.closest('.popup');
   closeButton.addEventListener('click', (e) => closePopup(parentWindow));
 });
-
-//New image popup deactivation
-
-const closeNewImageWindowBtn = newImageWindow.querySelector('#close-new-image-btn');
-
-closeNewImageWindowBtn.addEventListener('click', () => closePopup(newImageWindow));
-
-//Profile editor popup close
-
-const closeProfileEditBtn = profileEditWindow.querySelector('#close-profile-edit-btn');
-
-closeProfileEditBtn.addEventListener('click', () => closePopup(profileEditWindow));
-
-//Close image-viewer
-
-function closeImageViewer() {
-  imageViewerWindow.classList.remove('image-viewer_opened');
-}
-
-const closeImageViewerBtn = imageViewerWindow.querySelector('#close-image-viwer-btn');
-
-closeImageViewerBtn.addEventListener('click', closeImageViewer);
 
 //-----------------------Populate gallery function declaration and call---------------------------
 
