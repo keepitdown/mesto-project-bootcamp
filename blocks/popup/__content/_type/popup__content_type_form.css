@@ -1,0 +1,18 @@
+.popup__content_type_form {
+    box-sizing: border-box;
+    flex-grow: 1;
+    max-width: 370px;
+    margin: 0 19px;
+    padding: 25px 22px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 25px #00000026;
+  }
+  
+  @media screen and (min-width: 500px) {
+    .popup__content_type_form {
+      max-width: 430px;
+      padding: 34px 36px 37px;
+    }
+  }
