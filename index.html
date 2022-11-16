@@ -57,14 +57,34 @@
   <div class="popup popup_type_form" id="profile-editor-window">
     <div class="popup__content popup__content_type_form">
       <button class="popup__close-btn main-hover" type="button" aria-label="Закрыть окно редактирования профиля"></button>
-      <form name="profile-info-edit-form">
+      <form name="profile-info-edit-form"novalidate>
         <h2 class="popup__heading">Редактировать профиль</h2>
         <ul class="popup__input-field-list">
           <li class="popup__input-field-list-item">
-            <input type="text" name="profile-name" placeholder="Ваше имя" class="popup__input-field" aria-label="Имя">
+            <input
+              type="text"
+              name="profile-name"
+              class="popup__input-field popup__input-field_invalid"
+              aria-label="Имя"
+              placeholder="Ваше имя"
+              minlength="2"
+              maxlength="40"
+              required
+            >
+            <p class="popup__input-error-message" id="profile-name-input-error-message">Вы пропустили это поле.<br>Вы пропустили это поле.</p>
           </li>
           <li class="popup__input-field-list-item">
-            <input type="text" name="profile-description" placeholder="О себе" id="profile-description-field" class="popup__input-field" aria-label="О себе">
+            <input
+              type="text"
+              name="profile-description"
+              class="popup__input-field"
+              aria-label="О себе"
+              placeholder="О себе"
+              minlength="2"
+              maxlength="200"
+              required
+            >
+            <p class="popup__input-error-message" id="profile-description-input-error-message"></p>
           </li>
         </ul>
         <button class="popup__submit-btn main-hover" id="save-profile-changes-btn" type="submit">Сохранить</button>
@@ -79,10 +99,28 @@
         <h2 class="popup__heading">Новое место</h2>
         <ul class="popup__input-field-list">
           <li class="popup__input-field-list-item">
-            <input type="text" name="image-name" placeholder="Название" class="popup__input-field" aria-label="Название">
+            <input
+              type="text"
+              name="image-name"
+              class="popup__input-field"
+              aria-label="Название"
+              placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required
+            >
+            <p class="popup__input-error-message" id="image-name-input-error-message">Вы пропустили это поле.<br>Вы пропустили это поле.</p>
           </li>
           <li class="popup__input-field-list-item">
-            <input type="text" name="image-description" placeholder="Ссылка на картинку" class="popup__input-field" aria-label="Ссылка на картинку">
+            <input
+              type="url"
+              name="image-link"
+              class="popup__input-field"
+              aria-label="Ссылка на картинку"
+              placeholder="Ссылка на картинку"
+              required
+            >
+            <p class="popup__input-error-message" id="image-link-input-error-message"></p>
           </li>
         </ul>
         <button class="popup__submit-btn main-hover" id="create-image-btn" type="submit">Создать</button>

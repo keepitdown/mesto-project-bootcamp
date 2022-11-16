@@ -1,0 +1,7 @@
+.popup__input-field_invalid {
+  border-bottom-color: #f00;
+}
+
+.popup__input-field_invalid:focus {
+  border-bottom-color: #f00;
+}

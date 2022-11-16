@@ -172,7 +172,7 @@ profileEditForm.addEventListener('submit', (e) => {
 //New image submit
 
 const newImageNameField = newImageForm.elements['image-name'];
-const newImageLinkField = newImageForm.elements['image-description'];
+const newImageLinkField = newImageForm.elements['image-link'];
 const imageGallery = document.querySelector('.gallery__list');
 
 function createImageFromInputForm() {
@@ -223,3 +223,10 @@ function populateGallery() {
 }
 
 populateGallery();
+
+//----------------------------Form validation-------------------------------------------------------
+
+function eneableValidation() {
+  const pageForms = document.forms;
+  pageForms.forEach();
+}

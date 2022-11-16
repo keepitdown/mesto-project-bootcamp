@@ -1,12 +1,12 @@
 .popup__input-field-list {
   box-sizing: border-box;
-  margin: 73px 0 46px;
+  margin: 74px 0 13.5px;
   padding: 0;
   list-style: none;
 }
 
 @media screen and (min-width: 500px) {
   .popup__input-field-list {
-    margin: 47px 0 48px;
+    margin: 48px 0 17px;
   }
 }
