@@ -37,19 +37,19 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function closeWithKBRD(e) {
+function closeWithKbrd(e) {
   if (e.key === 'Escape') {
     const openPopup = document.querySelector('.popup_opened');
     closePopup(openPopup);
   }
 }
 
-function enableCloseWithKBRD () {
-  window.addEventListener('keydown', closeWithKBRD, {once: true});
+function enableCloseWithKbrd () {
+  window.addEventListener('keydown', closeWithKbrd, {once: true});
 }
 
-function disableCloseWithKBRD () {
-  window.removeEventListener('keydown', closeWithKBRD);
+function disableCloseWithKbrd () {
+  window.removeEventListener('keydown', closeWithKbrd);
 }
 
 //---------------------------Profile-Info buttons---------------------------------
@@ -75,7 +75,7 @@ const profileEditBtn = document.querySelector('#profile-edit-btn');
 profileEditBtn.addEventListener('click', () => {
   showCurrentInfo();
   openPopup(profileEditWindow);
-  enableCloseWithKBRD();
+  enableCloseWithKbrd();
 });
 
 //New image popup open
@@ -90,7 +90,7 @@ function clearTextFields(formWindow) {
 addImageBtn.addEventListener('click', () => {
   clearTextFields(newImageWindow);
   openPopup(newImageWindow);
-  enableCloseWithKBRD();
+  enableCloseWithKbrd();
 });
 
 //---------------------Image-card buttons and functionality----------------------------
@@ -123,7 +123,7 @@ function changeImageInsideViewer(image) {
 function openImageViewer(image) {
   changeImageInsideViewer(image);
   openPopup(imageViewerWindow);
-  enableCloseWithKBRD();
+  enableCloseWithKbrd();
 }
 
 //------------------------------Image-card creation-----------------------------------------
@@ -190,7 +190,20 @@ closePopupBtns.forEach((closeButton) => {
   const parentWindow = closeButton.closest('.popup');
   closeButton.addEventListener('click', () => {
     closePopup(parentWindow);
-    disableCloseWithKBRD();
+    disableCloseWithKbrd();
+  });
+});
+
+//Click on overlay to close functionality
+
+const popupOverlays = document.querySelectorAll('.popup');
+
+popupOverlays.forEach((overlayElement) => {
+  overlayElement.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      closePopup(overlayElement);
+      disableCloseWithKbrd();
+    }
   });
 });
 
