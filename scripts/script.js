@@ -135,7 +135,6 @@ function openImageViewer(image) {
 
 //------------------------------Image-card creation-----------------------------------------
 
-const imageGallery = document.querySelector('.gallery__list');
 const cardTemplate = document.querySelector('#image-card-template');
 
 function createNewCard(cardInfo) {
@@ -147,7 +146,7 @@ function createNewCard(cardInfo) {
   newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
   newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
   cardImage.addEventListener('click', (e) => openImageViewer(e.target));
-  imageGallery.prepend(newCard);
+  return(newCard)
 }
 
 //-------------------------------Popup windows buttons---------------------------------------
@@ -174,10 +173,13 @@ profileEditForm.addEventListener('submit', (e) => {
 
 const newImageNameField = newImageForm.elements['image-name'];
 const newImageLinkField = newImageForm.elements['image-description'];
+const imageGallery = document.querySelector('.gallery__list');
 
 function createImageFromInputForm() {
   const newImageData = {name: newImageNameField.value, link: newImageLinkField.value};
-  createNewCard(newImageData);
+  const newCard = createNewCard(newImageData);
+  imageGallery.prepend(newCard);
+
 }
 
 newImageForm.addEventListener('submit', (e) => {
@@ -214,8 +216,10 @@ popupOverlays.forEach((overlayElement) => {
 //-----------------------Populate gallery function declaration and call---------------------------
 
 function populateGallery() {
-  initialCards.reverse();
-  initialCards.forEach(createNewCard);
+  initialCards.forEach( (cardInfo) => {
+    const newCard = createNewCard(cardInfo);
+    imageGallery.append(newCard);
+  });
 }
 
 populateGallery();
