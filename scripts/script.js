@@ -2,11 +2,11 @@
 
 const initialCards = [
   {
-    name: 'Nissan GT-R R32',
+    name: 'Nissan Skyline GT-R R32',
     link: 'https://images.unsplash.com/photo-1600793575654-910699b5e4d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
   },
   {
-    name: 'Nissan GT-R R34',
+    name: 'Nissan Skyline GT-R R34',
     link: 'https://images.unsplash.com/photo-1605907153179-8b364644a241?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1630&q=80'
   },
   {
@@ -18,11 +18,11 @@ const initialCards = [
     link: 'https://images.unsplash.com/photo-1613467074357-5cc1804900a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
   },
   {
-    name: 'Mitsubishi Evolution',
+    name: 'Mitsubishi Lancer Evolution V',
     link: 'https://images.unsplash.com/photo-1560267806-265372a71e48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
   },
   {
-    name: 'Porsche 911 RWB',
+    name: 'Porsche 911 (993) RWB',
     link: 'https://images.unsplash.com/photo-1659940316181-d34bf23ae835?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'
   }
 ];
@@ -35,6 +35,21 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+}
+
+function closeWithKBRD(e) {
+  if (e.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened');
+    closePopup(openPopup);
+  }
+}
+
+function enableCloseWithKBRD () {
+  window.addEventListener('keydown', closeWithKBRD, {once: true});
+}
+
+function disableCloseWithKBRD () {
+  window.removeEventListener('keydown', closeWithKBRD);
 }
 
 //---------------------------Profile-Info buttons---------------------------------
@@ -58,8 +73,9 @@ function showCurrentInfo() {
 const profileEditBtn = document.querySelector('#profile-edit-btn');
 
 profileEditBtn.addEventListener('click', () => {
-  openPopup(profileEditWindow);
   showCurrentInfo();
+  openPopup(profileEditWindow);
+  enableCloseWithKBRD();
 });
 
 //New image popup open
@@ -73,7 +89,8 @@ function clearTextFields(formWindow) {
 
 addImageBtn.addEventListener('click', () => {
   clearTextFields(newImageWindow);
-  openPopup(newImageWindow)
+  openPopup(newImageWindow);
+  enableCloseWithKBRD();
 });
 
 //---------------------Image-card buttons and functionality----------------------------
@@ -106,6 +123,7 @@ function changeImageInsideViewer(image) {
 function openImageViewer(image) {
   changeImageInsideViewer(image);
   openPopup(imageViewerWindow);
+  enableCloseWithKBRD();
 }
 
 //------------------------------Image-card creation-----------------------------------------
@@ -170,7 +188,10 @@ const closePopupBtns = document.querySelectorAll('.popup__close-btn');
 
 closePopupBtns.forEach((closeButton) => {
   const parentWindow = closeButton.closest('.popup');
-  closeButton.addEventListener('click', (e) => closePopup(parentWindow));
+  closeButton.addEventListener('click', () => {
+    closePopup(parentWindow);
+    disableCloseWithKBRD();
+  });
 });
 
 //-----------------------Populate gallery function declaration and call---------------------------
