@@ -16,6 +16,6 @@
 }
 
 .popup__input-field::placeholder {
-  color: #000;
-  opacity: .5;
+  color: #c4c4c4;
+  opacity: 1;
 }
