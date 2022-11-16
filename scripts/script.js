@@ -39,13 +39,14 @@ function closePopup(popup) {
 
 function closeWithKbrd(e) {
   if (e.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_opened');
-    closePopup(openPopup);
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+    window.removeEventListener('keydown', closeWithKbrd);
   }
 }
 
 function enableCloseWithKbrd () {
-  window.addEventListener('keydown', closeWithKbrd, {once: true});
+  window.addEventListener('keydown', closeWithKbrd);
 }
 
 function disableCloseWithKbrd () {
@@ -60,9 +61,10 @@ const profileName = document.querySelector('.profile-info__profile-name');
 const profileDescription = document.querySelector('.profile-info__profile-description');
 
 const profileEditWindow = document.querySelector('#profile-editor-window');
+const profileEditForm = document.forms['profile-info-edit-form'];
 
-const profileNameField = profileEditWindow.querySelector('#profile-name-field');
-const profileDescriptionField = profileEditWindow.querySelector('#profile-description-field');
+const profileNameField = profileEditForm.elements['profile-name'];
+const profileDescriptionField = profileEditForm.elements['profile-description'];
 
 
 function showCurrentInfo() {
@@ -82,13 +84,14 @@ profileEditBtn.addEventListener('click', () => {
 
 const addImageBtn = document.querySelector('#add-image-btn');
 const newImageWindow = document.querySelector('#new-image-window');
+const newImageForm = document.forms['new-image-form'];
 
-function clearTextFields(formWindow) {
-  formWindow.querySelector('form').reset();
+function clearTextFields(formElement) {
+  formElement.reset();
 }
 
 addImageBtn.addEventListener('click', () => {
-  clearTextFields(newImageWindow);
+  clearTextFields(newImageForm);
   openPopup(newImageWindow);
   enableCloseWithKbrd();
 });
@@ -103,10 +106,14 @@ function leaveOrRemoveLike(likeBtn) {
 
 //Delete button functionality
 
+function removeFromDOM(event) {
+  event.target.remove();
+}
+
 function removeImageCard(removeBtn) {
   const parentCard = removeBtn.closest('.image-card');
   parentCard.classList.add('image-card_deleted');
-  parentCard.addEventListener('transitionend', (e) => e.target.remove());
+  parentCard.addEventListener('transitionend', removeFromDOM, {once: true});
 }
 
 //Open image-viwer
@@ -135,6 +142,7 @@ function createNewCard(cardInfo) {
   const newCard = cardTemplate.content.querySelector('.image-card').cloneNode(true);
   const cardImage = newCard.querySelector('.image-card__image');
   newCard.querySelector('.image-card__title').textContent = cardInfo.name;
+  cardImage.alt = cardInfo.name;
   cardImage.src = cardInfo.link;
   newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
   newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
@@ -156,8 +164,6 @@ function applyProfileChanges() {
   changePageTitle(profileNameField.value);
 }
 
-const profileEditForm = profileEditWindow.querySelector('#profile-info-edit-form')
-
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   applyProfileChanges();
@@ -166,10 +172,8 @@ profileEditForm.addEventListener('submit', (e) => {
 
 //New image submit
 
-const newImageForm = newImageWindow.querySelector('#new-image-form');
-
-const newImageNameField = newImageWindow.querySelector('#image-name-field');
-const newImageLinkField = newImageWindow.querySelector('#image-link-field');
+const newImageNameField = newImageForm.elements['image-name'];
+const newImageLinkField = newImageForm.elements['image-description'];
 
 function createImageFromInputForm() {
   const newImageData = {name: newImageNameField.value, link: newImageLinkField.value};
