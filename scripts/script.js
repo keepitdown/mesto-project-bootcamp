@@ -226,7 +226,51 @@ populateGallery();
 
 //----------------------------Form validation-------------------------------------------------------
 
-function eneableValidation() {
-  const pageForms = document.forms;
-  pageForms.forEach();
+function setInputState (input, errorMessageElement, classNames) {
+  if (input.checkValidity()) {
+    input.classList.remove(classNames.inputErrorClass);
+    errorMessageElement.textContent = '';
+  } else {
+    input.classList.add(classNames.inputErrorClass);
+    errorMessageElement.textContent = input.validationMessage;
+  }
 }
+
+function setSubmitButtonState(form, submitButton, classNames) {
+  if (form.checkValidity()) {
+    submitButton.classList.remove(classNames.inactiveButtonClass);
+    submitButton.removeAttribute('disabled');
+  } else {
+    submitButton.classList.add(classNames.inactiveButtonClass);
+    submitButton.setAttribute('disabled', '');
+  }
+}
+
+function setInputListener (form, input, submitButton, classNames) {
+  const errorMessageElement = form.parentElement.querySelector(`.${classNames.errorClass}`);
+  input.addEventListener('input', () => {
+    setInputState(input, errorMessageElement, classNames);
+    setSubmitButtonState(form, submitButton, classNames);
+  });
+}
+
+function validateForm(form, classNames) {
+  const submitButton = form.querySelector(`.${classNames.submitButtonSelector}`);
+  const formInputs = form.querySelectorAll(`.${classNames.inputSelector}`);
+  setSubmitButtonState(form, submitButton, classNames);
+  formInputs.forEach((input) => setInputListener(form, input, submitButton, classNames));
+}
+
+function enableValidation(classNames) {
+  const pageForms = document.querySelectorAll(`.${classNames.formSelector}`);
+  pageForms.forEach((form) => validateForm(form, classNames));
+}
+
+enableValidation({
+  formSelector: 'popup__form',
+  inputSelector: 'popup__input-field',
+  submitButtonSelector: 'popup__submit-btn',
+  inactiveButtonClass: 'popup__submit-btn_disabled',
+  inputErrorClass: 'popup__input-field_invalid',
+  errorClass: 'popup__input-error-message'
+});
