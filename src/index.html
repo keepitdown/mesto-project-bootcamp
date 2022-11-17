@@ -7,20 +7,18 @@
   <meta name="author" content="Артем Корытников">
   <meta name="description" content="Жак-Ив Кусто. Исследователь океана. Фото-галерея на сайте Mesto.">
   <meta name="keywords" content="Mesto, Место, Russia, Россия, Жак-Ив, Кусто, исследователь, океана, фото-галерея, фотографии">
-  <link rel="stylesheet" href="./pages/index.css">
-  <script src="./components/index.js" type="module"></script>
   <title>Жак-Ив Кусто - Mesto</title>
 </head>
 <body class="page">
 
   <header class="header page__header">
-    <img src="./images/site-logo.svg" alt="Логотип Mesto Russia" class="site-logo header__site-logo"> 
+    <img src="<%=require('./images/site-logo.svg')%>" alt="Логотип Mesto Russia" class="site-logo header__site-logo"> 
   </header>
 
   <main class="content page__content">
 
     <section class="profile-info content__profile-info" aria-label="Информация о пользователе">
-      <img src="./images/profile/profile-pic.jpg" alt="Изображение, установленное пользователем для профиля." class="profile-info__profile-pic">
+      <img src="<%=require('./images/profile/profile-pic.jpg')%>" alt="Изображение, установленное пользователем для профиля." class="profile-info__profile-pic">
       <div class="profile-info__editable-text">
         <div class="editable-text__text-content">
           <h1 class="profile-info__profile-name">Жак-Ив Кусто</h1>
