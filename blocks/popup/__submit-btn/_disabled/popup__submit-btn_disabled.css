@@ -3,3 +3,8 @@
   background-color: transparent;
   color: #c4c4c4;
 }
+
+.popup__submit-btn_disabled:hover {
+  opacity: 1;
+  cursor: default;
+}

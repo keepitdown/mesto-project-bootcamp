@@ -72,10 +72,30 @@ function showCurrentInfo() {
   profileDescriptionField.value = profileDescription.textContent;
 }
 
+const profileEditErrorMessages = profileEditWindow.querySelectorAll('.popup__input-error-message');
+
+function clearInputErrorMessages(messageElements) {
+  messageElements.forEach((messageElement) => messageElement.textContent = '');
+}
+
+function removeErrorStyles(form) {
+  const inputs = Array.from(form.elements);
+  inputs.forEach((inputElement) => inputElement.classList.remove('popup__input-field_invalid'));
+}
+
+const profileEditSubmitButton = profileEditForm.querySelector('.popup__submit-btn');
+
+function enableSubmitButton(button) {
+  button.classList.remove('popup__submit-btn_disabled');
+}
+
 const profileEditBtn = document.querySelector('#profile-edit-btn');
 
 profileEditBtn.addEventListener('click', () => {
   showCurrentInfo();
+  clearInputErrorMessages(profileEditErrorMessages);
+  removeErrorStyles(profileEditForm);
+  enableSubmitButton(profileEditSubmitButton);
   openPopup(profileEditWindow);
   enableCloseWithKbrd();
 });
@@ -90,8 +110,19 @@ function clearTextFields(formElement) {
   formElement.reset();
 }
 
+const newImageErrorMessages = newImageWindow.querySelectorAll('.popup__input-error-message');
+
+const newImageSubmitButton = newImageForm.querySelector('.popup__submit-btn');
+
+function disableSubmitButton(button) {
+  button.classList.add('popup__submit-btn_disabled');
+}
+
 addImageBtn.addEventListener('click', () => {
   clearTextFields(newImageForm);
+  clearInputErrorMessages(newImageErrorMessages);
+  removeErrorStyles(newImageForm);
+  disableSubmitButton(newImageSubmitButton);
   openPopup(newImageWindow);
   enableCloseWithKbrd();
 });
@@ -247,7 +278,7 @@ function setSubmitButtonState(form, submitButton, classNames) {
 }
 
 function setInputListener (form, input, submitButton, classNames) {
-  const errorMessageElement = form.parentElement.querySelector(`.${classNames.errorClass}`);
+  const errorMessageElement = input.parentElement.querySelector(`.${classNames.errorClass}`);
   input.addEventListener('input', () => {
     setInputState(input, errorMessageElement, classNames);
     setSubmitButtonState(form, submitButton, classNames);
