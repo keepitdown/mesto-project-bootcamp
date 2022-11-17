@@ -288,7 +288,6 @@ function setInputListener (form, input, submitButton, classNames) {
 function validateForm(form, classNames) {
   const submitButton = form.querySelector(`.${classNames.submitButtonSelector}`);
   const formInputs = form.querySelectorAll(`.${classNames.inputSelector}`);
-  setSubmitButtonState(form, submitButton, classNames);
   formInputs.forEach((input) => setInputListener(form, input, submitButton, classNames));
 }
 
