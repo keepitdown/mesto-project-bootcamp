@@ -29,18 +29,9 @@ newImageForm.addEventListener('submit', (e) => {
   closePopup(newImageWindow);
 })
 
-//Close popup functionality
-
-closePopupBtns.forEach((closeButton) => {
-  const parentWindow = closeButton.closest('.popup');
-  closeButton.addEventListener('click', () => {
-    closePopup(parentWindow);
-  });
-});
-
 popupOverlays.forEach((overlayElement) => {
   overlayElement.addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
+    if (e.target.classList.contains('popup') || e.target.classList.contains('popup__close-btn')) {
       closePopup(overlayElement);
     }
   });
