@@ -2,7 +2,9 @@
 
 import {profileName, profileDescription, imageGallery, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField, newImageLinkField, newImageErrorMessages,
-  newImageSubmitButton, openPopup, enableCloseWithKbrd} from './utils.js';
+  newImageSubmitButton} from './constants.js';
+
+import {openPopup, enableCloseWithKbrd} from './utils.js';
 
 import {createNewCard} from './card.js';
 

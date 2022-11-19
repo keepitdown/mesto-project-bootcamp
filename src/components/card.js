@@ -1,5 +1,6 @@
 import {initialCards} from './data.js';
-import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption, openPopup, enableCloseWithKbrd} from './utils.js';
+import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption} from './constants.js';
+import {openPopup, enableCloseWithKbrd} from './utils.js';
 
 //-----------------Card buttons and functionality-----------------------
 

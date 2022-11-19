@@ -1,7 +1,8 @@
 import './pages/index.css';
 
 import {profileEditBtn, addImageBtn, closePopupBtns, popupOverlays, profileEditWindow, profileEditForm, newImageWindow,
-  newImageForm, closePopup, disableCloseWithKbrd} from './components/utils.js';
+  newImageForm} from './components/constants.js'
+import {closePopup, disableCloseWithKbrd} from './components/utils.js';
 import {openProfileEditor, openNewImageEditor, applyProfileChanges, createImageFromInputForm} from './components/modal.js';
 import {populateGallery} from './components/card.js';
 import {enableValidation} from './components/validate.js';
