@@ -4,7 +4,7 @@ import {profileName, profileDescription, imageGallery, profileEditWindow, profil
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField, newImageLinkField, newImageErrorMessages,
   newImageSubmitButton} from './constants.js';
 
-import {openPopup, enableCloseWithKbrd} from './utils.js';
+import {openPopup} from './utils.js';
 
 import {createNewCard} from './card.js';
 
@@ -34,7 +34,6 @@ function openProfileEditor() {
   removeErrorStyles(profileEditForm);
   enableSubmitButton(profileEditSubmitButton);
   openPopup(profileEditWindow);
-  enableCloseWithKbrd();
 }
 
 //New image popup functions
@@ -53,7 +52,6 @@ function openNewImageEditor() {
   removeErrorStyles(newImageForm);
   disableSubmitButton(newImageSubmitButton);
   openPopup(newImageWindow);
-  enableCloseWithKbrd();
 }
 
 //Profile edit submit

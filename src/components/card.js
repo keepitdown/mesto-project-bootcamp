@@ -1,6 +1,6 @@
 import {initialCards} from './data.js';
 import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption} from './constants.js';
-import {openPopup, enableCloseWithKbrd} from './utils.js';
+import {openPopup} from './utils.js';
 
 //-----------------Card buttons and functionality-----------------------
 
@@ -34,7 +34,6 @@ function changeImageInsideViewer(cardInfo) {
 function openImageViewer(cardInfo) {
   changeImageInsideViewer(cardInfo);
   openPopup(imageViewerWindow);
-  enableCloseWithKbrd();
 }
 
 //------------------------------Image-card creation-----------------------------------------

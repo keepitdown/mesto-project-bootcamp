@@ -2,7 +2,7 @@ import './pages/index.css';
 
 import {profileEditBtn, addImageBtn, closePopupBtns, popupOverlays, profileEditWindow, profileEditForm, newImageWindow,
   newImageForm} from './components/constants.js'
-import {closePopup, disableCloseWithKbrd} from './components/utils.js';
+import {closePopup} from './components/utils.js';
 import {openProfileEditor, openNewImageEditor, applyProfileChanges, createImageFromInputForm} from './components/modal.js';
 import {populateGallery} from './components/card.js';
 import {enableValidation} from './components/validate.js';
@@ -35,7 +35,6 @@ closePopupBtns.forEach((closeButton) => {
   const parentWindow = closeButton.closest('.popup');
   closeButton.addEventListener('click', () => {
     closePopup(parentWindow);
-    disableCloseWithKbrd();
   });
 });
 
@@ -43,7 +42,6 @@ popupOverlays.forEach((overlayElement) => {
   overlayElement.addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
       closePopup(overlayElement);
-      disableCloseWithKbrd();
     }
   });
 });
