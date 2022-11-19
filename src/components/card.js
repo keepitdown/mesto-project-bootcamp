@@ -6,7 +6,7 @@ import {openPopup, enableCloseWithKbrd} from './utils.js';
 
 //Like button functionality
 
-function leaveOrRemoveLike(likeBtn) {
+function toggleLike(likeBtn) {
   likeBtn.classList.toggle('image-card__like-btn_active');
 }
 
@@ -24,13 +24,15 @@ function removeImageCard(removeBtn) {
 
 //Open image-viwer
 
-function changeImageInsideViewer(image) {
-  imageViewerImage.src = image.src;
-  imageViewerCaption.textContent = image.closest('.image-card').querySelector('.image-card__title').textContent;
+function changeImageInsideViewer(cardInfo) {
+  imageViewerImage.src = cardInfo.link;
+  imageViewerImage.alt = cardInfo.name;
+  imageViewerCaption.textContent = cardInfo.name;
+
 }
 
-function openImageViewer(image) {
-  changeImageInsideViewer(image);
+function openImageViewer(cardInfo) {
+  changeImageInsideViewer(cardInfo);
   openPopup(imageViewerWindow);
   enableCloseWithKbrd();
 }
@@ -45,9 +47,9 @@ function createNewCard(cardInfo) {
   newCard.querySelector('.image-card__title').textContent = cardInfo.name;
   cardImage.alt = cardInfo.name;
   cardImage.src = cardInfo.link;
-  newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => leaveOrRemoveLike(e.target));
+  newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => toggleLike(e.target));
   newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
-  cardImage.addEventListener('click', (e) => openImageViewer(e.target));
+  cardImage.addEventListener('click', () => openImageViewer(cardInfo));
   return(newCard)
 }
 
