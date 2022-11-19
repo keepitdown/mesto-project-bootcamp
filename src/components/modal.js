@@ -24,15 +24,16 @@ function removeErrorStyles(form) {
   inputs.forEach((inputElement) => inputElement.classList.remove('popup__input-field_invalid'));
 }
 
-function enableSubmitButton(button) {
-  button.classList.remove('popup__submit-btn_disabled');
+function disableSubmitButton(button) {
+  button.classList.add('popup__submit-btn_disabled');
+  button.setAttribute('disabled', '');
 }
 
 function openProfileEditor() {
   showCurrentInfo();
   clearInputErrorMessages(profileEditErrorMessages);
   removeErrorStyles(profileEditForm);
-  enableSubmitButton(profileEditSubmitButton);
+  disableSubmitButton(profileEditSubmitButton);
   openPopup(profileEditWindow);
 }
 
@@ -40,10 +41,6 @@ function openProfileEditor() {
 
 function clearTextFields(formElement) {
   formElement.reset();
-}
-
-function disableSubmitButton(button) {
-  button.classList.add('popup__submit-btn_disabled');
 }
 
 function openNewImageEditor() {
