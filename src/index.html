@@ -76,7 +76,7 @@
             <p class="popup__input-error-message" id="profile-pic-input-error-message"></p>
           </li>
         </ul>
-        <button class="popup__submit-btn popup__submit-btn_disabled main-hover" id="save-profile-pic-btn" type="submit">Сохранить</button>
+        <button class="popup__submit-btn main-hover" name="save-profile-pic-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -114,7 +114,7 @@
             <p class="popup__input-error-message" id="profile-description-input-error-message"></p>
           </li>
         </ul>
-        <button class="popup__submit-btn popup__submit-btn_disabled main-hover" id="save-profile-changes-btn" type="submit">Сохранить</button>
+        <button class="popup__submit-btn main-hover" name="save-profile-changes-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -150,7 +150,17 @@
             <p class="popup__input-error-message" id="image-link-input-error-message"></p>
           </li>
         </ul>
-        <button class="popup__submit-btn main-hover" id="create-image-btn" type="submit">Создать</button>
+        <button class="popup__submit-btn main-hover" name="create-image-btn" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_form popup_opened" id="card-delete-confirm-window">
+    <div class="popup__content popup__content_type_form">
+      <button class="popup__close-btn main-hover" type="button" aria-label="Закрыть окно и отменить удаление"></button>
+      <form name="confirm-card-delete-form" class="popup__form">
+        <h2 class="popup__heading popup__heading_type_confirm-window">Вы уверены?</h2>
+        <button class="popup__submit-btn main-hover" name="comfirm-card-delete-btn" type="submit">Да</button>
       </form>
     </div>
   </div>

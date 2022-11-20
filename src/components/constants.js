@@ -29,7 +29,7 @@ const changePicLinkField = changeProfilePicForm.elements['profile-pic-link'];
 
 const changePicErrorMessages = changePicWindow.querySelectorAll('.popup__input-error-message');
 
-const changePicSubmitButton = changeProfilePicForm.querySelector('.popup__submit-btn');
+const changePicSubmitButton = changeProfilePicForm.elements['save-profile-pic-btn'];
 
 //Edit profile-info elements
 
@@ -41,7 +41,7 @@ const profileDescriptionField = profileEditForm.elements['profile-description'];
 
 const profileEditErrorMessages = profileEditWindow.querySelectorAll('.popup__input-error-message');
 
-const profileEditSubmitButton = profileEditForm.querySelector('.popup__submit-btn');
+const profileEditSubmitButton = profileEditForm.elements['save-profile-changes-btn'];
 
 //New image elements
 
@@ -53,7 +53,7 @@ const newImageLinkField = newImageForm.elements['image-link'];
 
 const newImageErrorMessages = newImageWindow.querySelectorAll('.popup__input-error-message');
 
-const newImageSubmitButton = newImageForm.querySelector('.popup__submit-btn');
+const newImageSubmitButton = newImageForm.elements['create-image-btn'];
 
 //Image-viewer elements
 
