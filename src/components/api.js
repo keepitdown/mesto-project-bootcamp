@@ -57,4 +57,15 @@ function sendImageCardData(cardData) {
   .then(checkResponse);
 }
 
-export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData};
+function sendLikeToggle(cardInfo) {
+  const method = !cardInfo.isLiked ? 'PUT' : 'DELETE';
+  return fetch(`${baseUrl}${groupId}/cards/likes/${cardInfo._id}`, {
+    method,
+    headers: {
+      authorization: token
+    }
+  })
+  .then(checkResponse);
+}
+
+export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData, sendLikeToggle};

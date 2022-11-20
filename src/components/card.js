@@ -1,21 +1,30 @@
 import {profileData} from './data.js';
 import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption} from './constants.js';
 import {openPopup} from './utils.js';
-import {requestGalleryContent} from './api.js';
+import {requestGalleryContent, sendLikeToggle} from './api.js';
 
 //-----------------Card buttons and functionality-----------------------
 
 //Like button functionality
 
-function toggleLike(likeBtn) {
-  likeBtn.classList.toggle('image-card__like-btn_active');
+function setLikesState(likeBtn, likeCount, cardInfo) {
+  likeCount.textContent = cardInfo.likes.length;
+  if (cardInfo.likes.some((likeOwner) => likeOwner._id === profileData._id)) {
+    likeBtn.classList.add('image-card__like-btn_active');
+    cardInfo.isLiked = true;
+  } else {
+    likeBtn.classList.remove('image-card__like-btn_active');
+    cardInfo.isLiked = false;
+  }
 }
 
-function setLikesState(likeBtn, likeCount, likesArray) {
-  likeCount.textContent = likesArray.length;
-  if (likesArray.some((likeRecord) => likeRecord._id === profileData._id)) {
-    likeBtn.classList.add('image-card__like-btn_active');
-  } else likeBtn.classList.remove('image-card__like-btn_active');
+function toggleLike(cardInfo, likeBtn, likeCount) {
+  sendLikeToggle(cardInfo)
+    .then((cardData) => {
+      cardInfo.likes = cardData.likes;
+      setLikesState(likeBtn, likeCount, cardInfo);
+    })
+    .catch((err) => console.log(err));
 }
 
 //Delete button functionality
@@ -50,15 +59,19 @@ const cardTemplate = document.querySelector('#image-card-template');
 
 function createNewCard(cardInfo) {
   const newCard = cardTemplate.content.querySelector('.image-card').cloneNode(true);
+
   newCard.dataset.id = cardInfo._id;
   const cardImage = newCard.querySelector('.image-card__image');
   newCard.querySelector('.image-card__title').textContent = cardInfo.name;
   cardImage.alt = cardInfo.name;
   cardImage.src = cardInfo.link;
+
+  cardInfo.isLiked = false;
   const likeBtn = newCard.querySelector('.image-card__like-btn');
   const likeCount = newCard.querySelector('.image-card__like-count')
-  setLikesState(likeBtn, likeCount, cardInfo.likes);
-  newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => toggleLike(e.target));
+  setLikesState(likeBtn, likeCount, cardInfo);
+  likeBtn.addEventListener('click', () => toggleLike(cardInfo, likeBtn, likeCount));
+
   const removeCardBtn = newCard.querySelector('.image-card__remove-card-btn');
   if (cardInfo.owner._id === profileData._id) {
     removeCardBtn.addEventListener('click', (e) => removeImageCard(e.target));
