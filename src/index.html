@@ -20,7 +20,7 @@
     <section class="profile-info content__profile-info" aria-label="Информация о пользователе">
       <div class="profile-info__profile-pic-container">
         <img src="<%=require('./images/profile/profile-pic.jpg')%>" alt="Изображение, установленное пользователем для профиля." class="profile-info__profile-pic">
-        <button class="profile-info__change-pic-btn" id="change-pic-btn" type="button" aria-label="Установить новое изображение пользователя"></button>
+        <button class="profile-info__change-pic-btn" id="change-pic-btn" type="button" aria-label="Установить новое изображение профиля"></button>
       </div>
       <div class="profile-info__editable-text">
         <div class="editable-text__text-content">
@@ -54,6 +54,29 @@
   <footer class="footer page__footer">
     <p class="footer__copyright-info">© 2022 Mesto Russia</p>
   </footer>
+
+  <div class="popup popup_type_form" id="change-profile-pic-window">
+    <div class="popup__content popup__content_type_form">
+      <button class="popup__close-btn main-hover" type="button" aria-label="Закрыть окно смены изображения профиля"></button>
+      <form name="change-profile-pic-form" class="popup__form" novalidate>
+        <h2 class="popup__heading">Обновить аватар</h2>
+        <ul class="popup__input-field-list">
+          <li class="popup__input-field-list-item">
+            <input
+              type="url"
+              name="profile-pic"
+              class="popup__input-field"
+              aria-label="Ссылка на изображение"
+              placeholder="Ссылка на изображение"
+              required
+            >
+            <p class="popup__input-error-message" id="profile-pic-input-error-message"></p>
+          </li>
+        </ul>
+        <button class="popup__submit-btn popup__submit-btn_disabled main-hover" id="save-profile-pic-btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
 
   <div class="popup popup_type_form" id="profile-editor-window">
     <div class="popup__content popup__content_type_form">
