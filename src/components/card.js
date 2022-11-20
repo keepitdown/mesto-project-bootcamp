@@ -11,6 +11,13 @@ function toggleLike(likeBtn) {
   likeBtn.classList.toggle('image-card__like-btn_active');
 }
 
+function setLikesState(likeBtn, likeCount, likesArray) {
+  likeCount.textContent = likesArray.length;
+  if (likesArray.some((likeRecord) => likeRecord._id === profileData._id)) {
+    likeBtn.classList.add('image-card__like-btn_active');
+  } else likeBtn.classList.remove('image-card__like-btn_active');
+}
+
 //Delete button functionality
 
 function removeFromDOM(event) {
@@ -48,6 +55,9 @@ function createNewCard(cardInfo) {
   newCard.querySelector('.image-card__title').textContent = cardInfo.name;
   cardImage.alt = cardInfo.name;
   cardImage.src = cardInfo.link;
+  const likeBtn = newCard.querySelector('.image-card__like-btn');
+  const likeCount = newCard.querySelector('.image-card__like-count')
+  setLikesState(likeBtn, likeCount, cardInfo.likes);
   newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => toggleLike(e.target));
   const removeCardBtn = newCard.querySelector('.image-card__remove-card-btn');
   if (cardInfo.owner._id === profileData._id) {
