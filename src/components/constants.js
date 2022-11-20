@@ -61,9 +61,15 @@ const imageViewerWindow = document.querySelector('#image-viewer-window');
 const imageViewerImage = imageViewerWindow.querySelector('#image-viewer-image');
 const imageViewerCaption = imageViewerWindow.querySelector('#image-viewer-caption');
 
+//Confirm delete elements
+
+const deleteConfirmWindow = document.querySelector('#card-delete-confirm-window');
+const deleteConfirmWForm = document.forms['confirm-card-delete-form'];
+const confrimDeleteBtn = deleteConfirmWForm.elements['comfirm-card-delete-btn'];
+
 export {profilePicture, editProfilePicBtn, profileName, profileDescription, profileEditBtn, addImageBtn, imageGallery,
   popupOverlays, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField,
   newImageLinkField, newImageErrorMessages, newImageSubmitButton, imageViewerWindow, imageViewerImage,
   imageViewerCaption, changeProfilePicForm, changePicLinkField, changePicWindow, changePicErrorMessages,
-  changePicSubmitButton}; 
+  changePicSubmitButton, deleteConfirmWindow, deleteConfirmWForm, confrimDeleteBtn}; 

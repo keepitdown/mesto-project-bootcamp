@@ -2,12 +2,13 @@
 
 import {profileName, profileDescription, imageGallery, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField, newImageLinkField, newImageErrorMessages,
-  newImageSubmitButton, changeProfilePicForm, changePicLinkField, changePicWindow, changePicErrorMessages, changePicSubmitButton} from './constants.js';
+  newImageSubmitButton, changeProfilePicForm, changePicLinkField, changePicWindow, changePicErrorMessages, changePicSubmitButton, deleteConfirmWindow
+  } from './constants.js';
 import {profileData} from './data.js';
 import {openPopup, logError, changeProfileImage, changeProfileInfo, clearTextFields, showSavingingMessage, clearInputErrorMessages, removeErrorStyles,
   disableSubmitButton} from './utils.js';
-import {createNewCard} from './card.js';
-import {sendProfilePicUpd, sendProfileInfoUpd, sendImageCardData} from './api';
+import {createNewCard, removeImageCardLocaly} from './card.js';
+import {sendProfilePicUpd, sendProfileInfoUpd, sendImageCardData, deleteCardRequest} from './api';
 
 //Change profile pic popup open function
 
@@ -22,7 +23,7 @@ function openProfilePicEditor() {
 //Submit new profile pic function
 
 function applyProfilePictureChange() {
-  showSavingingMessage(changePicSubmitButton, true);
+  showSavingingMessage(changePicSubmitButton, true, 'Сохранение...');
 
   sendProfilePicUpd(changePicLinkField.value)
     .then((data) => {
@@ -54,7 +55,7 @@ function openProfileEditor() {
 
 function applyProfileInfoChanges() {
 
-  showSavingingMessage(profileEditSubmitButton, true);
+  showSavingingMessage(profileEditSubmitButton, true, 'Сохранение...');
 
   sendProfileInfoUpd(profileNameField.value, profileDescriptionField.value)
     .then((newProfileData) => {
@@ -80,7 +81,7 @@ function openNewImageEditor() {
 
 function createImageFromInputForm() {
 
-  showSavingingMessage(newImageSubmitButton, true);
+  showSavingingMessage(newImageSubmitButton, true, 'Сохранение...');
 
   const newImageData = {name: newImageNameField.value, link: newImageLinkField.value};
   sendImageCardData(newImageData)
@@ -90,4 +91,22 @@ function createImageFromInputForm() {
     .finally(() => showSavingingMessage(newImageSubmitButton, false, 'Создать'));
 }
 
-export {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges, createImageFromInputForm};
+//Image card delete confirm
+
+let deleteTargetCard;
+
+function openDeleteConfirmWindow(cardId) {
+  openPopup(deleteConfirmWindow);
+  deleteTargetCard = cardId;
+}
+
+function removeImageCard() {
+  showSavingingMessage(newImageSubmitButton, false, 'Удаление...')
+  deleteCardRequest(deleteTargetCard)
+    .then(() => removeImageCardLocaly(deleteTargetCard))
+    .catch(logError)
+    .finally(() => showSavingingMessage(newImageSubmitButton, false, 'Да'));
+}
+
+export {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges,
+  createImageFromInputForm, openDeleteConfirmWindow, removeImageCard};

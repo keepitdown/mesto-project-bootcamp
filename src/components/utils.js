@@ -35,12 +35,12 @@ function clearTextFields(formElement) {
   formElement.reset();
 }
 
-function showSavingingMessage(button, isSaving, defaultText) {
+function showSavingingMessage(button, isSaving, messageText) {
   if (isSaving) {
-    button.textContent = 'Сохранение...';
+    button.textContent = messageText;
     button.setAttribute('disabled', '');
   } else {
-    button.textContent = defaultText;
+    button.textContent = messageText;
     button.removeAttribute('disabled');
   }
 }

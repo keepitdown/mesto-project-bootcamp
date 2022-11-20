@@ -2,9 +2,10 @@ import './pages/index.css';
 
 import { profileData } from './components/data.js';
 import {editProfilePicBtn, profileEditBtn, addImageBtn, popupOverlays, profileEditWindow, profileEditForm, newImageWindow,
-  newImageForm, changePicWindow, changeProfilePicForm} from './components/constants.js'
+  newImageForm, changePicWindow, changeProfilePicForm, deleteConfirmWindow, deleteConfirmWForm} from './components/constants.js'
 import {closePopup, logError, changeProfileInfo, changeProfileImage} from './components/utils.js';
-import {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges, createImageFromInputForm} from './components/modal.js';
+import {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges, createImageFromInputForm, removeImageCard
+  } from './components/modal.js';
 import {populateGallery} from './components/card.js';
 import {enableValidation} from './components/validate.js';
 import { requestProfileInfo} from './components/api';
@@ -45,6 +46,14 @@ popupOverlays.forEach((overlayElement) => {
       closePopup(overlayElement);
     }
   });
+});
+
+//Card delete confirm popup button
+
+deleteConfirmWForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  removeImageCard();
+  closePopup(deleteConfirmWindow);
 });
 
 //------------------Profile-info download function----------------------

@@ -82,4 +82,14 @@ function sendProfilePicUpd(newPicLink) {
   .then(checkResponse);
 }
 
-export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData, sendLikeToggle, sendProfilePicUpd};
+function deleteCardRequest(cardId) {
+  return fetch(`${baseUrl}${groupId}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: token
+    }
+  })
+    .then(checkResponse);
+};
+
+export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData, sendLikeToggle, sendProfilePicUpd, deleteCardRequest};

@@ -1,7 +1,7 @@
 import {profileData} from './data.js';
-import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption, changeProfilePicForm,
-profilePicLinkField} from './constants.js';
+import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption} from './constants.js';
 import {openPopup, logError} from './utils.js';
+import {openDeleteConfirmWindow} from './modal.js';
 import {requestGalleryContent, sendLikeToggle} from './api.js';
 
 //-----------------Card buttons and functionality-----------------------
@@ -34,10 +34,14 @@ function removeFromDOM(event) {
   event.target.remove();
 }
 
-function removeImageCard(removeBtn) {
-  const parentCard = removeBtn.closest('.image-card');
-  parentCard.classList.add('image-card_deleted');
-  parentCard.addEventListener('transitionend', removeFromDOM, {once: true});
+function removeImageCardLocaly(cardId) {
+  const targetCard = imageGallery.querySelector(`[data-id="${cardId}"`);
+  targetCard.classList.add('image-card_deleted');
+  targetCard.addEventListener('transitionend', removeFromDOM, {once: true});
+}
+
+function removeImageCard(cardId) {
+
 }
 
 //Open image-viwer
@@ -75,7 +79,7 @@ function createNewCard(cardInfo) {
 
   const removeCardBtn = newCard.querySelector('.image-card__remove-card-btn');
   if (cardInfo.owner._id === profileData._id) {
-    removeCardBtn.addEventListener('click', (e) => removeImageCard(e.target));
+    removeCardBtn.addEventListener('click', () => openDeleteConfirmWindow(cardInfo._id));
   } else {
     removeCardBtn.remove();
   }
@@ -96,4 +100,4 @@ function populateGallery() {
     .catch(logError);
 }
 
-export {createNewCard, populateGallery};
+export {createNewCard, populateGallery, removeImageCardLocaly};
