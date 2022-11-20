@@ -1,3 +1,5 @@
+import {profilePicture, profileName, profileDescription} from './constants.js';
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   window.addEventListener('keydown', closeWithKbrd);
@@ -15,4 +17,14 @@ function closeWithKbrd(e) {
   }
 }
 
-export {openPopup, closePopup};
+function changeProfileInfo(newName, newDescription) {
+  profileName.textContent = newName;
+  profileDescription.textContent = newDescription;
+  document.title = `${newName}  - Mesto`;
+}
+
+function changeProfileImage(imageLink) {
+  profilePicture.src = imageLink;
+}
+
+export {openPopup, closePopup, changeProfileInfo, changeProfileImage};

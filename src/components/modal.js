@@ -51,18 +51,6 @@ function openNewImageEditor() {
   openPopup(newImageWindow);
 }
 
-//Profile edit submit
-
-function changePageTitle(newProfileName) {
-  document.title = `${newProfileName}  - Mesto`;
-}
-
-function applyProfileChanges() {
-  profileName.textContent = profileNameField.value;
-  profileDescription.textContent = profileDescriptionField.value;
-  changePageTitle(profileNameField.value);
-}
-
 //New image submit
 
 function createImageFromInputForm() {
@@ -72,4 +60,4 @@ function createImageFromInputForm() {
 
 }
 
-export {openProfileEditor, openNewImageEditor, applyProfileChanges, createImageFromInputForm};
+export {openProfileEditor, openNewImageEditor, createImageFromInputForm};

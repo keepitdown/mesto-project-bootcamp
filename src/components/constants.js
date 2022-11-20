@@ -1,5 +1,7 @@
 //------------------------Profile info elements-----------------------------
 
+const profilePicture = document.querySelector('.profile-info__profile-pic');
+
 const profileName = document.querySelector('.profile-info__profile-name');
 const profileDescription = document.querySelector('.profile-info__profile-description');
 
@@ -46,7 +48,7 @@ const imageViewerWindow = document.querySelector('#image-viewer-window');
 const imageViewerImage = imageViewerWindow.querySelector('#image-viewer-image');
 const imageViewerCaption = imageViewerWindow.querySelector('#image-viewer-caption');
 
-export {profileName, profileDescription, profileEditBtn, addImageBtn, imageGallery,
+export {profilePicture, profileName, profileDescription, profileEditBtn, addImageBtn, imageGallery,
   popupOverlays, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField,
   newImageLinkField, newImageErrorMessages, newImageSubmitButton, imageViewerWindow, imageViewerImage,
