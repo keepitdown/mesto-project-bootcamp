@@ -3,10 +3,10 @@
 import {profileName, profileDescription, imageGallery, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField, newImageLinkField, newImageErrorMessages,
   newImageSubmitButton} from './constants.js';
-
-import {openPopup} from './utils.js';
-
+import {profileData} from './data.js';
+import {openPopup, changeProfileInfo} from './utils.js';
 import {createNewCard} from './card.js';
+import {sendProfileInfoUpd} from './api';
 
 //Profile editor popup open functions
 
@@ -37,6 +37,34 @@ function openProfileEditor() {
   openPopup(profileEditWindow);
 }
 
+//Saving message
+
+function showSavingingMessage(button, isSaving, defaultText) {
+  if (isSaving) {
+    button.textContent = 'Сохранение...';
+    button.setAttribute('disabled', '');
+  } else {
+    button.textContent = defaultText;
+    button.removeAttribute('disabled');
+  }
+}
+
+//Edit profile info functions
+
+function applyProfileInfoChanges() {
+
+  showSavingingMessage(profileEditSubmitButton, true);
+
+  sendProfileInfoUpd(profileNameField.value, profileDescriptionField.value)
+    .then((newProfileData) => {
+      profileData.name = newProfileData.name;
+      profileData.about = newProfileData.about;
+    })
+    .then(() => changeProfileInfo(profileData.name, profileData.about))
+    .catch((err) => console.log(err))
+    .finally(() => showSavingingMessage(profileEditSubmitButton, false, 'Сохранить'));
+}
+
 //New image popup functions
 
 function clearTextFields(formElement) {
@@ -60,4 +88,4 @@ function createImageFromInputForm() {
 
 }
 
-export {openProfileEditor, openNewImageEditor, createImageFromInputForm};
+export {openProfileEditor, openNewImageEditor, applyProfileInfoChanges, createImageFromInputForm};

@@ -1,6 +1,7 @@
-import {initialCards} from './data.js';
+import {profileData} from './data.js';
 import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption} from './constants.js';
 import {openPopup} from './utils.js';
+import {requestGalleryContent} from './api.js';
 
 //-----------------Card buttons and functionality-----------------------
 
@@ -42,12 +43,18 @@ const cardTemplate = document.querySelector('#image-card-template');
 
 function createNewCard(cardInfo) {
   const newCard = cardTemplate.content.querySelector('.image-card').cloneNode(true);
+  newCard.dataset.id = cardInfo._id;
   const cardImage = newCard.querySelector('.image-card__image');
   newCard.querySelector('.image-card__title').textContent = cardInfo.name;
   cardImage.alt = cardInfo.name;
   cardImage.src = cardInfo.link;
   newCard.querySelector('.image-card__like-btn').addEventListener('click', (e) => toggleLike(e.target));
-  newCard.querySelector('.image-card__remove-card-btn').addEventListener('click', (e) => removeImageCard(e.target));
+  const removeCardBtn = newCard.querySelector('.image-card__remove-card-btn');
+  if (cardInfo.owner._id === profileData._id) {
+    removeCardBtn.addEventListener('click', (e) => removeImageCard(e.target));
+  } else {
+    removeCardBtn.remove();
+  }
   cardImage.addEventListener('click', () => openImageViewer(cardInfo));
   return(newCard)
 }
@@ -55,10 +62,14 @@ function createNewCard(cardInfo) {
 //-----------------------Populate gallery function-------------------------------------------
 
 function populateGallery() {
-  initialCards.forEach( (cardInfo) => {
-    const newCard = createNewCard(cardInfo);
-    imageGallery.append(newCard);
-  });
+  requestGalleryContent()
+    .then((cardArray) => {
+      cardArray.forEach((cardInfo) => {
+        const newCard = createNewCard(cardInfo);
+        imageGallery.append(newCard);
+      });
+    })
+    .catch((err) => console.log(err));
 }
 
 export {createNewCard, populateGallery};

@@ -4,10 +4,10 @@ import { profileData } from './components/data.js';
 import {profileEditBtn, addImageBtn, popupOverlays, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   newImageWindow, newImageForm} from './components/constants.js'
 import {closePopup, changeProfileInfo, changeProfileImage} from './components/utils.js';
-import {openProfileEditor, openNewImageEditor, createImageFromInputForm} from './components/modal.js';
-import {populateGallery} from './components/card.js';
+import {openProfileEditor, openNewImageEditor, applyProfileInfoChanges, createImageFromInputForm} from './components/modal.js';
+import {createNewCard, populateGallery} from './components/card.js';
 import {enableValidation} from './components/validate.js';
-import { requestProfileInfo } from './components/api';
+import { requestProfileInfo, sendProfileInfoUpd} from './components/api';
 
 //----------------------------Adding event listeners--------------------------------
 
@@ -21,7 +21,7 @@ addImageBtn.addEventListener('click', openNewImageEditor);
 
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  changeProfileInfo(profileNameField.value, profileDescriptionField.value);
+  applyProfileInfoChanges();
   closePopup(profileEditWindow);
 });
 
@@ -39,7 +39,7 @@ popupOverlays.forEach((overlayElement) => {
   });
 });
 
-//---------------------Profile-info download----------------------
+//------------------Profile-info download function----------------------
 
 function loadProfileInfo() {
   requestProfileInfo()
@@ -53,9 +53,9 @@ function loadProfileInfo() {
     .catch((err) => console.log(err));
 } 
 
-loadProfileInfo();
-
 //-----------------------Function calls---------------------------
+
+loadProfileInfo();
 
 populateGallery();
 
