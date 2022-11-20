@@ -42,4 +42,19 @@ function sendProfileInfoUpd(profileName, profileDescription) {
     .then(checkResponse);
 }
 
-export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd};
+function sendImageCardData(cardData) {
+  return fetch(`${baseUrl}${groupId}/cards`, {
+    method: 'POST',
+    headers: {
+      authorization: token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: cardData.name,
+      link: cardData.link
+    })
+  })
+  .then(checkResponse);
+}
+
+export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData};

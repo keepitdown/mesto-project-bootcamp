@@ -6,7 +6,7 @@ import {profileName, profileDescription, imageGallery, profileEditWindow, profil
 import {profileData} from './data.js';
 import {openPopup, changeProfileInfo} from './utils.js';
 import {createNewCard} from './card.js';
-import {sendProfileInfoUpd} from './api';
+import {sendProfileInfoUpd, sendImageCardData} from './api';
 
 //Profile editor popup open functions
 
@@ -82,10 +82,15 @@ function openNewImageEditor() {
 //New image submit
 
 function createImageFromInputForm() {
-  const newImageData = {name: newImageNameField.value, link: newImageLinkField.value};
-  const newCard = createNewCard(newImageData);
-  imageGallery.prepend(newCard);
 
+  showSavingingMessage(newImageSubmitButton, true);
+
+  const newImageData = {name: newImageNameField.value, link: newImageLinkField.value};
+  sendImageCardData(newImageData)
+    .then((newCardData) => createNewCard(newCardData))
+    .then((newCard) => imageGallery.prepend(newCard))
+    .catch((err) => console.log(err))
+    .finally(() => showSavingingMessage(newImageSubmitButton, false, 'Создать'));
 }
 
 export {openProfileEditor, openNewImageEditor, applyProfileInfoChanges, createImageFromInputForm};

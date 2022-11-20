@@ -7,7 +7,7 @@ import {closePopup, changeProfileInfo, changeProfileImage} from './components/ut
 import {openProfileEditor, openNewImageEditor, applyProfileInfoChanges, createImageFromInputForm} from './components/modal.js';
 import {createNewCard, populateGallery} from './components/card.js';
 import {enableValidation} from './components/validate.js';
-import { requestProfileInfo, sendProfileInfoUpd} from './components/api';
+import { requestProfileInfo} from './components/api';
 
 //----------------------------Adding event listeners--------------------------------
 
