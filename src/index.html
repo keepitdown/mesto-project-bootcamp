@@ -18,7 +18,10 @@
   <main class="content page__content">
 
     <section class="profile-info content__profile-info" aria-label="Информация о пользователе">
-      <img src="<%=require('./images/profile/profile-pic.jpg')%>" alt="Изображение, установленное пользователем для профиля." class="profile-info__profile-pic">
+      <div class="profile-info__profile-pic-container">
+        <img src="<%=require('./images/profile/profile-pic.jpg')%>" alt="Изображение, установленное пользователем для профиля." class="profile-info__profile-pic">
+        <button class="profile-info__change-pic-btn" id="change-pic-btn" type="button" aria-label="Установить новое изображение пользователя"></button>
+      </div>
       <div class="profile-info__editable-text">
         <div class="editable-text__text-content">
           <h1 class="profile-info__profile-name">Жак-Ив Кусто</h1>

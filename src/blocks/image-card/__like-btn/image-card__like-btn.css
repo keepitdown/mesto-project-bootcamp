@@ -18,6 +18,6 @@
   cursor: pointer;
 }
 
-.image-card__like-btn:hover, .image-card__like-btn:active {
+.image-card__like-btn:hover, .image-card__like-btn:focus {
   opacity: .5;
 }

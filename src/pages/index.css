@@ -9,7 +9,9 @@
 @import url(../blocks/site-logo/site-logo.css);
 @import url(../blocks/content/__profile-info/content__profile-info.css);
 @import url(../blocks/profile-info/profile-info.css);
+@import url(../blocks/profile-info/__profile-pic-container/profile-info__profile-pic-container.css);
 @import url(../blocks/profile-info/__profile-pic/profile-info__profile-pic.css);
+@import url(../blocks/profile-info/__change-pic-btn/profile-info__change-pic-btn.css);
 @import url(../blocks/profile-info/__editable-text/profile-info__editable-text.css);
 @import url(../blocks/profile-info/__text-content/editable-text__text-content.css);
 @import url(../blocks/profile-info/__profile-name/profile-info__profile-name.css);

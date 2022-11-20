@@ -6,6 +6,6 @@
   cursor: pointer;
 }
 
-.main-hover:hover, .main-hover:active {
+.main-hover:hover, .main-hover:focus {
   opacity: 0.6;
 }

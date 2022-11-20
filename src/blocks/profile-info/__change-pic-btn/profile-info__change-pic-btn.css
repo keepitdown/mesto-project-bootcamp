@@ -1,0 +1,23 @@
+.profile-info__change-pic-btn {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background-image: url(../../../images/ui/edit-btn-pic.svg);
+  background-size: 26px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000c;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.profile-info__change-pic-btn:hover {
+  cursor: pointer;
+}
+
+.profile-info__change-pic-btn:hover, .profile-info__change-pic-btn:focus {
+  opacity: 1;
+}

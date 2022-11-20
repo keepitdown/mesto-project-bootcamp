@@ -27,4 +27,9 @@ const initialCards = [
   }
 ];
 
+//-------------------------------------Authorization---------------------------------------------------------
+
+const groupId = 'placeholderId';
+const token = 'placeholderToken';
+
 export {initialCards};
