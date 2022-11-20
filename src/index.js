@@ -1,11 +1,11 @@
 import './pages/index.css';
 
 import { profileData } from './components/data.js';
-import {profileEditBtn, addImageBtn, popupOverlays, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
-  newImageWindow, newImageForm} from './components/constants.js'
-import {closePopup, changeProfileInfo, changeProfileImage} from './components/utils.js';
-import {openProfileEditor, openNewImageEditor, applyProfileInfoChanges, createImageFromInputForm} from './components/modal.js';
-import {createNewCard, populateGallery} from './components/card.js';
+import {editProfilePicBtn, profileEditBtn, addImageBtn, popupOverlays, profileEditWindow, profileEditForm, newImageWindow,
+  newImageForm, changePicWindow, changeProfilePicForm} from './components/constants.js'
+import {closePopup, logError, changeProfileInfo, changeProfileImage} from './components/utils.js';
+import {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges, createImageFromInputForm} from './components/modal.js';
+import {populateGallery} from './components/card.js';
 import {enableValidation} from './components/validate.js';
 import { requestProfileInfo} from './components/api';
 
@@ -13,11 +13,19 @@ import { requestProfileInfo} from './components/api';
 
 //Profile-Info buttons
 
+editProfilePicBtn.addEventListener('click', openProfilePicEditor);
+
 profileEditBtn.addEventListener('click', openProfileEditor);
 
 addImageBtn.addEventListener('click', openNewImageEditor);
 
 //Popup submit functionality
+
+changeProfilePicForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  applyProfilePictureChange();
+  closePopup(changePicWindow);
+});
 
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -50,7 +58,7 @@ function loadProfileInfo() {
       changeProfileInfo(profileData.name, profileData.about);
       changeProfileImage(profileData.avatar);
     })
-    .catch((err) => console.log(err));
+    .catch(logError);
 } 
 
 //-----------------------Function calls---------------------------

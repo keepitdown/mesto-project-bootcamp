@@ -2,6 +2,8 @@
 
 const profilePicture = document.querySelector('.profile-info__profile-pic');
 
+const editProfilePicBtn = document.querySelector('#change-pic-btn');
+
 const profileName = document.querySelector('.profile-info__profile-name');
 const profileDescription = document.querySelector('.profile-info__profile-description');
 
@@ -17,6 +19,17 @@ const imageGallery = document.querySelector('.gallery__list');
 //Generic popup elements
 
 const popupOverlays = document.querySelectorAll('.popup');
+
+//Change profile picture elements
+
+const changePicWindow = document.querySelector('#change-profile-pic-window');
+const changeProfilePicForm = document.forms['change-profile-pic-form'];
+
+const changePicLinkField = changeProfilePicForm.elements['profile-pic-link'];
+
+const changePicErrorMessages = changePicWindow.querySelectorAll('.popup__input-error-message');
+
+const changePicSubmitButton = changeProfilePicForm.querySelector('.popup__submit-btn');
 
 //Edit profile-info elements
 
@@ -48,8 +61,9 @@ const imageViewerWindow = document.querySelector('#image-viewer-window');
 const imageViewerImage = imageViewerWindow.querySelector('#image-viewer-image');
 const imageViewerCaption = imageViewerWindow.querySelector('#image-viewer-caption');
 
-export {profilePicture, profileName, profileDescription, profileEditBtn, addImageBtn, imageGallery,
+export {profilePicture, editProfilePicBtn, profileName, profileDescription, profileEditBtn, addImageBtn, imageGallery,
   popupOverlays, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField,
   newImageLinkField, newImageErrorMessages, newImageSubmitButton, imageViewerWindow, imageViewerImage,
-  imageViewerCaption};
+  imageViewerCaption, changeProfilePicForm, changePicLinkField, changePicWindow, changePicErrorMessages,
+  changePicSubmitButton}; 

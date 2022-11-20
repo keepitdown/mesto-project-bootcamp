@@ -1,6 +1,7 @@
 import {profileData} from './data.js';
-import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption} from './constants.js';
-import {openPopup} from './utils.js';
+import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption, changeProfilePicForm,
+profilePicLinkField} from './constants.js';
+import {openPopup, logError} from './utils.js';
 import {requestGalleryContent, sendLikeToggle} from './api.js';
 
 //-----------------Card buttons and functionality-----------------------
@@ -24,7 +25,7 @@ function toggleLike(cardInfo, likeBtn, likeCount) {
       cardInfo.likes = cardData.likes;
       setLikesState(likeBtn, likeCount, cardInfo);
     })
-    .catch((err) => console.log(err));
+    .catch(logError);
 }
 
 //Delete button functionality
@@ -92,7 +93,7 @@ function populateGallery() {
         imageGallery.append(newCard);
       });
     })
-    .catch((err) => console.log(err));
+    .catch(logError);
 }
 
 export {createNewCard, populateGallery};

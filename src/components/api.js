@@ -68,4 +68,18 @@ function sendLikeToggle(cardInfo) {
   .then(checkResponse);
 }
 
-export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData, sendLikeToggle};
+function sendProfilePicUpd(newPicLink) {
+  return fetch(`${baseUrl}${groupId}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: {
+      authorization: token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      avatar: newPicLink
+    })
+  })
+  .then(checkResponse);
+}
+
+export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData, sendLikeToggle, sendProfilePicUpd};
