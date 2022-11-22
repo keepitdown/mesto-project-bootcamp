@@ -35,7 +35,7 @@ function clearTextFields(formElement) {
   formElement.reset();
 }
 
-function showSavingingMessage(button, isSaving, messageText) {
+function showInprogressMessage(button, isSaving, messageText) {
   if (isSaving) {
     button.textContent = messageText;
     button.setAttribute('disabled', '');
@@ -59,5 +59,5 @@ function disableSubmitButton(button) {
   button.setAttribute('disabled', '');
 }
 
-export {openPopup, closePopup, logError, changeProfileInfo, changeProfileImage, clearTextFields, showSavingingMessage,
+export {openPopup, closePopup, logError, changeProfileInfo, changeProfileImage, clearTextFields, showInprogressMessage,
   clearInputErrorMessages, removeErrorStyles, disableSubmitButton};

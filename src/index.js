@@ -1,7 +1,7 @@
 import './pages/index.css';
 
 import { profileData } from './components/data.js';
-import {editProfilePicBtn, profileEditBtn, addImageBtn, popupOverlays, profileEditWindow, profileEditForm, newImageWindow,
+import {editProfilePicBtn, profileEditBtn, addImageBtn, popupOverlays, profileEditForm, newImageWindow,
   newImageForm, changePicWindow, changeProfilePicForm, deleteConfirmWindow, deleteConfirmWForm} from './components/constants.js'
 import {closePopup, logError, changeProfileInfo, changeProfileImage} from './components/utils.js';
 import {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges, createImageFromInputForm, removeImageCard
@@ -25,19 +25,16 @@ addImageBtn.addEventListener('click', openNewImageEditor);
 changeProfilePicForm.addEventListener('submit', (e) => {
   e.preventDefault();
   applyProfilePictureChange();
-  closePopup(changePicWindow);
 });
 
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   applyProfileInfoChanges();
-  closePopup(profileEditWindow);
 });
 
 newImageForm.addEventListener('submit', (e) => {
   e.preventDefault();
   createImageFromInputForm();
-  closePopup(newImageWindow);
 })
 
 popupOverlays.forEach((overlayElement) => {
@@ -53,7 +50,6 @@ popupOverlays.forEach((overlayElement) => {
 deleteConfirmWForm.addEventListener('submit', (e) => {
   e.preventDefault();
   removeImageCard();
-  closePopup(deleteConfirmWindow);
 });
 
 //------------------Profile-info download function----------------------

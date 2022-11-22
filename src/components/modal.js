@@ -2,10 +2,10 @@
 
 import {profileName, profileDescription, imageGallery, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField, newImageLinkField, newImageErrorMessages,
-  newImageSubmitButton, changeProfilePicForm, changePicLinkField, changePicWindow, changePicErrorMessages, changePicSubmitButton, deleteConfirmWindow
-  } from './constants.js';
+  newImageSubmitButton, changeProfilePicForm, changePicLinkField, changePicWindow, changePicErrorMessages, changePicSubmitButton, deleteConfirmWindow,
+  deleteConfirmWForm, confrimDeleteBtn} from './constants.js';
 import {profileData} from './data.js';
-import {openPopup, logError, changeProfileImage, changeProfileInfo, clearTextFields, showSavingingMessage, clearInputErrorMessages, removeErrorStyles,
+import {openPopup, closePopup, logError, changeProfileImage, changeProfileInfo, clearTextFields, showInprogressMessage, clearInputErrorMessages, removeErrorStyles,
   disableSubmitButton} from './utils.js';
 import {createNewCard, removeImageCardLocaly} from './card.js';
 import {sendProfilePicUpd, sendProfileInfoUpd, sendImageCardData, deleteCardRequest} from './api';
@@ -23,15 +23,16 @@ function openProfilePicEditor() {
 //Submit new profile pic function
 
 function applyProfilePictureChange() {
-  showSavingingMessage(changePicSubmitButton, true, 'Сохранение...');
+  showInprogressMessage(changePicSubmitButton, true, 'Сохранение...');
 
   sendProfilePicUpd(changePicLinkField.value)
     .then((data) => {
       profileData.avatar = data.avatar;
       changeProfileImage(profileData.avatar);
+      closePopup(changePicWindow);
     })
     .catch(logError)
-    .finally(() => showSavingingMessage(changePicSubmitButton, false, 'Сохранить'));
+    .finally(() => showInprogressMessage(changePicSubmitButton, false, 'Сохранить'));
 }
 
 //function 
@@ -55,16 +56,17 @@ function openProfileEditor() {
 
 function applyProfileInfoChanges() {
 
-  showSavingingMessage(profileEditSubmitButton, true, 'Сохранение...');
+  showInprogressMessage(profileEditSubmitButton, true, 'Сохранение...');
 
   sendProfileInfoUpd(profileNameField.value, profileDescriptionField.value)
     .then((newProfileData) => {
       profileData.name = newProfileData.name;
       profileData.about = newProfileData.about;
+      changeProfileInfo(profileData.name, profileData.about)
+      closePopup(profileEditWindow);
     })
-    .then(() => changeProfileInfo(profileData.name, profileData.about))
     .catch(logError)
-    .finally(() => showSavingingMessage(profileEditSubmitButton, false, 'Сохранить'));
+    .finally(() => showInprogressMessage(profileEditSubmitButton, false, 'Сохранить'));
 }
 
 //New image popup open function
@@ -81,14 +83,17 @@ function openNewImageEditor() {
 
 function createImageFromInputForm() {
 
-  showSavingingMessage(newImageSubmitButton, true, 'Сохранение...');
+  showInprogressMessage(newImageSubmitButton, true, 'Сохранение...');
 
   const newImageData = {name: newImageNameField.value, link: newImageLinkField.value};
   sendImageCardData(newImageData)
-    .then((newCardData) => createNewCard(newCardData))
-    .then((newCard) => imageGallery.prepend(newCard))
+    .then((newCardData) => {
+      const newCard = createNewCard(newCardData);
+      imageGallery.prepend(newCard);
+      closePopup(newImageWindow);
+    })
     .catch(logError)
-    .finally(() => showSavingingMessage(newImageSubmitButton, false, 'Создать'));
+    .finally(() => showInprogressMessage(newImageSubmitButton, false, 'Создать'));
 }
 
 //Image card delete confirm
@@ -101,11 +106,14 @@ function openDeleteConfirmWindow(cardId) {
 }
 
 function removeImageCard() {
-  showSavingingMessage(newImageSubmitButton, false, 'Удаление...')
+  showInprogressMessage(confrimDeleteBtn, true, 'Удаление...')
   deleteCardRequest(deleteTargetCard)
-    .then(() => removeImageCardLocaly(deleteTargetCard))
+    .then(() => {
+      removeImageCardLocaly(deleteTargetCard)
+      closePopup(deleteConfirmWindow);
+    })
     .catch(logError)
-    .finally(() => showSavingingMessage(newImageSubmitButton, false, 'Да'));
+    .finally(() => showInprogressMessage(confrimDeleteBtn, false, 'Да'));
 }
 
 export {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges,

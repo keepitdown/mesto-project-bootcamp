@@ -30,18 +30,10 @@ function toggleLike(cardInfo, likeBtn, likeCount) {
 
 //Delete button functionality
 
-function removeFromDOM(event) {
-  event.target.remove();
-}
-
 function removeImageCardLocaly(cardId) {
   const targetCard = imageGallery.querySelector(`[data-id="${cardId}"`);
   targetCard.classList.add('image-card_deleted');
-  targetCard.addEventListener('transitionend', removeFromDOM, {once: true});
-}
-
-function removeImageCard(cardId) {
-
+  setTimeout((targetCard) => targetCard.remove(), 300, targetCard);
 }
 
 //Open image-viwer
