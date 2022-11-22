@@ -2,7 +2,7 @@ import {profileData} from './data.js';
 import {imageGallery, imageViewerWindow, imageViewerImage, imageViewerCaption} from './constants.js';
 import {openPopup, logError} from './utils.js';
 import {openDeleteConfirmWindow} from './modal.js';
-import {requestGalleryContent, sendLikeToggle} from './api.js';
+import {sendLikeToggle} from './api.js';
 
 //-----------------Card buttons and functionality-----------------------
 
@@ -81,15 +81,11 @@ function createNewCard(cardInfo) {
 
 //-----------------------Populate gallery function-------------------------------------------
 
-function populateGallery() {
-  requestGalleryContent()
-    .then((cardArray) => {
-      cardArray.forEach((cardInfo) => {
-        const newCard = createNewCard(cardInfo);
-        imageGallery.append(newCard);
-      });
-    })
-    .catch(logError);
+function populateGallery(cardArray) {
+  cardArray.forEach((cardInfo) => {
+    const newCard = createNewCard(cardInfo);
+    imageGallery.append(newCard);
+  });
 }
 
 export {createNewCard, populateGallery, removeImageCardLocaly};

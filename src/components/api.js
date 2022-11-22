@@ -7,7 +7,7 @@ function checkResponse(response) {
   return Promise.reject(`Ошибка: ${response.status}`);
 }
 
-function requestProfileInfo() {
+function requestProfileData() {
   return fetch(`${baseUrl}${groupId}/users/me`, {
     method: 'GET',
     headers: {
@@ -92,4 +92,4 @@ function deleteCardRequest(cardId) {
     .then(checkResponse);
 };
 
-export {requestProfileInfo, requestGalleryContent, sendProfileInfoUpd, sendImageCardData, sendLikeToggle, sendProfilePicUpd, deleteCardRequest};
+export {requestProfileData, requestGalleryContent, sendProfileInfoUpd, sendImageCardData, sendLikeToggle, sendProfilePicUpd, deleteCardRequest};

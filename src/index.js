@@ -1,14 +1,14 @@
 import './pages/index.css';
 
 import { profileData } from './components/data.js';
-import {editProfilePicBtn, profileEditBtn, addImageBtn, popupOverlays, profileEditForm, newImageWindow,
-  newImageForm, changePicWindow, changeProfilePicForm, deleteConfirmWindow, deleteConfirmWForm} from './components/constants.js'
+import {editProfilePicBtn, profileEditBtn, addImageBtn, popupOverlays, profileEditForm,
+  newImageForm, changeProfilePicForm, deleteConfirmWForm} from './components/constants.js'
 import {closePopup, logError, changeProfileInfo, changeProfileImage} from './components/utils.js';
 import {openProfilePicEditor, openProfileEditor, openNewImageEditor, applyProfilePictureChange, applyProfileInfoChanges, createImageFromInputForm, removeImageCard
   } from './components/modal.js';
 import {populateGallery} from './components/card.js';
 import {enableValidation} from './components/validate.js';
-import { requestProfileInfo} from './components/api';
+import {requestProfileData, requestGalleryContent} from './components/api';
 
 //----------------------------Adding event listeners--------------------------------
 
@@ -52,25 +52,31 @@ deleteConfirmWForm.addEventListener('submit', (e) => {
   removeImageCard();
 });
 
-//------------------Profile-info download function----------------------
+//----------------Profile-info download functions------------------
 
-function loadProfileInfo() {
-  requestProfileInfo()
-    .then((data) => {
-      for (let property in data) {
-        profileData[property] = data[property];
-      }
-      changeProfileInfo(profileData.name, profileData.about);
-      changeProfileImage(profileData.avatar);
+function loadProfileInfo(dataObject) {
+    for (let property in dataObject) {
+      profileData[property] = dataObject[property];
+    }
+    changeProfileInfo(profileData.name, profileData.about);
+    changeProfileImage(profileData.avatar);
+}
+
+function loadInitialData() {
+  Promise.all([requestProfileData(), requestGalleryContent()])
+  .then((initialData) => {
+    const profileData = initialData[0];
+    loadProfileInfo(profileData);
+
+    const GalleryContent = initialData[1];
+    populateGallery(GalleryContent);
     })
     .catch(logError);
-} 
+}
 
 //-----------------------Function calls---------------------------
 
-loadProfileInfo();
-
-populateGallery();
+loadInitialData()
 
 enableValidation({
   formSelector: 'popup__form',

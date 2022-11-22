@@ -3,7 +3,7 @@
 import {profileName, profileDescription, imageGallery, profileEditWindow, profileEditForm, profileNameField, profileDescriptionField,
   profileEditErrorMessages, profileEditSubmitButton, newImageWindow, newImageForm, newImageNameField, newImageLinkField, newImageErrorMessages,
   newImageSubmitButton, changeProfilePicForm, changePicLinkField, changePicWindow, changePicErrorMessages, changePicSubmitButton, deleteConfirmWindow,
-  deleteConfirmWForm, confrimDeleteBtn} from './constants.js';
+  confrimDeleteBtn} from './constants.js';
 import {profileData} from './data.js';
 import {openPopup, closePopup, logError, changeProfileImage, changeProfileInfo, clearTextFields, showInprogressMessage, clearInputErrorMessages, removeErrorStyles,
   disableSubmitButton} from './utils.js';
