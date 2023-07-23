@@ -21,10 +21,12 @@
 
 ## Используемые технологии
 
-* HTML
-* CSS
-* JavaScript
-* WebPack
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML5" width="35" height="35"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" title="CSS3" alt="CSS3" width="35" height="35"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="35" height="35"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/webpack/webpack-original.svg" title="Webpack" alt="Webpack" width="35" height="35"/>&nbsp;
+</div>
 
 Для реализации проекта использованы стандартные технологии веб-разработки **HTML**, **CSS** и **JavaScript**. В проекте применена адаптивная верстка, что обеспечивает корректное отображение страницы на устройствах с различными форм-факторами и размерами экранов. Адаптивность достигается благодаря использованию относительных единиц при указании размеров, технологиям **flexbox** и **grid**, а также CSS-правил, включающих медиазапросы с директивой **@media**. При помощи JavaScript-кода реализованы функции, позволяющие пользователю открывать и закрывать модальные окна, а также в реальном времени вносить изменения в содержимое страницы. Помимо этого посредством JavaScript-кода осуществляется живая валидация данных, которые вносятся пользователем в представленные на странице формы, и отправка запросов на сервер для загрузки контента и сохранения внесенных изменений. Для сборки проекта применяется сборщик модулей **Webpack**. В конфигурацию сборки включен транспилятор **Babel**, производящий замену современного JavaScript-синтаксиса на более широко поддерживаемый и вставку полифилов для отсутствующих в ранних стандартах языка функций. Для обработки HTML-кода при сборке применяется плагин **HtmlWebpackPlugin**. Обработка CSS-файлов производится плагином **MiniCssExtractPlugin**. В ее ходе происходит сборка организованной по стандарту BEM-nested структуры в один минифицированный файл.
 
